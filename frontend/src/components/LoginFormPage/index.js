@@ -34,7 +34,7 @@ function LoginFormPage() {
         <input
           type='text'
           value={credential}
-          onchange={(e) => setCredential(e.target.value)}
+          onChange={(e) => setCredential(e.target.value)}
           required
         />
       </label>
