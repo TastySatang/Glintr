@@ -1,0 +1,24 @@
+.navbar {
+  display:flex;
+  justify-content: center;
+  background-color: rgba(33, 39, 39, .05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 2000;
+}
+
+.glintr-logo-container {
+  display: block;
+}
+
+.glintr-logo-container img {
+  width: 98px;
+}
+
+.navbar li {
+  list-style-type: none;
+}

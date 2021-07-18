@@ -24,12 +24,18 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to='/'>Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <>
+      <div className='navbar'>
+        <div className='glintr-logo-container'>
+          <NavLink exact to='/'><img src={'/GlintrLogo.png'} alt='logo' /></NavLink>
+        </div>
+        <ul>
+          <li>
+            {isLoaded && sessionLinks}
+          </li>
+        </ul>
+      </div>
+    </>
   )
 }
 
