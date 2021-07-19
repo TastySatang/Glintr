@@ -29,33 +29,35 @@ function LoginForm() {
 
   return (
     <>
-      <div className='modal__container'>
-        <form className='login__container' onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
-          <h3 className='login__title'>Log in to Glintr</h3>
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            placeholder='Username or Email'
-            required
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'
-            required
-          />
-          <button className='button' type="submit">Sign in</button>
-        </form>
-        <form className='login__container' onSubmit={handleDemo}>
-          <button className='demo__button'>Demo login</button>
-        </form>
+      <div className='inspiration'>
+        <div className='modal__container'>
+          <form className='login__container' onSubmit={handleSubmit}>
+            <ul>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+            <h3 className='login__title'>Log in to Glintr</h3>
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              placeholder='Username or Email'
+              required
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Password'
+              required
+            />
+            <button className='button' type="submit">Sign in</button>
+          </form>
+          <form className='login__container' onSubmit={handleDemo}>
+            <button className='demo__button'>Demo login</button>
+          </form>
+        </div>
       </div>
     </>
   );
