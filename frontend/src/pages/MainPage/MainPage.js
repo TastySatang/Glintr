@@ -4,7 +4,11 @@ function MainPage() {
   return (
     <>
       <div className='background-container'>
-        <h2>Do you need inspiration?</h2>
+        <div className='hook'>
+          <h1>Discover your passion.</h1>
+          <h3>Join our community. Find your inspiration.</h3>
+
+        </div>
       </div>
     </>
   );

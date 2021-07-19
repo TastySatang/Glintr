@@ -5,4 +5,28 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+
+.hook {
+  font-family: 'Courier New', Courier, monospace;
+  color: #fff;
+  max-width: 640px;
+}
+
+.hook > h1 {
+  font-size: 45px;
+  font-weight: 600;
+  margin: .67em 0;
+  text-align: center;
+}
+
+.hook > h3 {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 1em 0;
+  text-align: center;
 }
