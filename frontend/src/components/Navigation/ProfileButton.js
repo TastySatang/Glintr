@@ -35,16 +35,16 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <div className='navbar__profile' onClick={openMenu}>
         <i className="fas fa-user-circle"></i>
-      </button>
+      </div>
       {showMenu && (
-        <ul>
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
+        <ul className='dropdown__content'>
+          <section>{user.username}</section>
+          <section>{user.email}</section>
+          <section>
             <button onClick={logout}>Log Out</button>
-          </li>
+          </section>
         </ul>
       )}
     </>

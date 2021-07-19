@@ -32,48 +32,49 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
+    <div className='signup__container'>
+      <form onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+        <h3 className='signup__title'>Sign up for Glintr</h3>
+
         <input
           type='text'
           value={email}
           onChange={e => setEmail(e.target.value)}
+          placeholder='Email'
           required
         />
-      </label>
-      <label>
-        Username
+
+
         <input
           type='text'
           value={username}
           onChange={e => setUsername(e.target.value)}
+          placeholder='Username'
           required
         />
-      </label>
-      <label>
-        Password
+
         <input
           type='password'
           value={password}
           onChange={e => setPassword(e.target.value)}
+          placeholder='Password'
           required
         />
-      </label>
-      <label>
-        Confirm Password
+
         <input
           type='password'
           value={confirm}
           onChange={e => setConfirm(e.target.value)}
+          placeholder='Confirm Password'
           required
         />
-      </label>
-      <button type='submit'>Sign up</button>
-    </form>
+
+        <button className='button' type='submit'>Sign up</button>
+      </form>
+    </div>
   );
 }
 

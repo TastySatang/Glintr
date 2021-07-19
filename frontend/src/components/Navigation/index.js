@@ -17,8 +17,12 @@ function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <LoginFormModal />
-        <NavLink to='/signup'>Sign up</NavLink>
+        <li className='navbar__login'>
+          <LoginFormModal />
+        </li>
+        <li className='navbar__signup'>
+          <NavLink className='navbar__signup--link' to='/signup'>Sign up</NavLink>
+        </li>
       </>
     );
   }
@@ -29,10 +33,10 @@ function Navigation({ isLoaded }) {
         <div className='glintr-logo-container'>
           <NavLink exact to='/'><img src={'/GlintrLogo.png'} alt='logo' /></NavLink>
         </div>
-        <ul>
-          <li>
-            {isLoaded && sessionLinks}
-          </li>
+        <ul className='navbar__tools'>
+          <div className='emptyholder'>
+          </div>
+          {isLoaded && sessionLinks}
         </ul>
       </div>
     </>
