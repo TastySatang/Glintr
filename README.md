@@ -14,3 +14,6 @@ This is a solo project to help myself use technologies I have learned so far. (r
     * `npx dotenv sequelize db:seed:all`
 6. Cd into backend folder and run `npm start`
 7. Cd into frontend folder and run `npm start`
+
+### website should look something like this
+[[https://github.com/TastySatang/AuthMe/blob/main/frontend/public/example.png]]
