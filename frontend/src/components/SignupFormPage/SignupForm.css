@@ -1,6 +1,7 @@
 body,html {
   height: 100vh;
   margin: 0;
+  font-family: 'Proxima Nova','helvetica neue',helvetica,arial,sans-serif;
   /* background-image: url("../../images/background1.jpeg");
    background-position: center;
    background-repeat: no-repeat;

@@ -26,6 +26,7 @@
   width: 98px;
   align-self: center;
   justify-self: center;
+
 }
 
 .emptyholder {
@@ -61,6 +62,7 @@
 
 .navbar__profile {
   font-size: 33px;
+  color: #fff;
 }
 
 .fas {
@@ -68,8 +70,67 @@
   border: none;
 }
 
+.dropdown {
+  width: 300px;
+  position: fixed;
+  top: 58.6px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 30%),
+  0 1px 4px 0 rgb(0 0 0 / 20%);
+}
+
 .dropdown__content {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  white-space: nowrap;
+  color: #212124;
+  padding-inline-start: 0;
+}
+
+.dropdown__content > section {
+  padding: 20px;
+  font-size: 16px;
+  text-align: justify;
+  font-family: Haettenschweiler;
+
+}
+
+.dropdown__arrow {
+  height: 11px;
+  width: 21px;
+  top: -11px;
+  overflow: hidden;
+  position: absolute;
+  border: none;
+  display: block;
+}
+
+.logout {
+  text-align: justify;
+  border-style: none;
+  background-color: #fff;
+  font-size: 16px;
+  font-family: Haettenschweiler;
+  cursor: pointer;
+  width: 100%;
+}
+
+.dropdown__content > section:hover,
+.logout__section:hover .logout,
+.logout__section.hover .logout__section {
+  background-color: whitesmoke;
+}
+
+
+.droparrow::after {
+  display: block;
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-top: 7px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px #aaa,
+  -1px -1px 4px rgb(0 0 0 / 20%);
+  transform: rotate(45deg);
 }
