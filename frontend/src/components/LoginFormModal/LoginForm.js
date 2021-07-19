@@ -29,7 +29,7 @@ function LoginForm() {
 
   return (
     <>
-      <div >
+      <div className='modal__container'>
         <form className='login__container' onSubmit={handleSubmit}>
           <ul>
             {errors.map((error, idx) => (
@@ -52,9 +52,9 @@ function LoginForm() {
             required
           />
           <button className='button' type="submit">Sign in</button>
-          <form className='login__container' onSubmit={handleDemo}>
-            <button className='demo__button'>Demo login</button>
-          </form>
+        </form>
+        <form className='login__container' onSubmit={handleDemo}>
+          <button className='demo__button'>Demo login</button>
         </form>
       </div>
     </>

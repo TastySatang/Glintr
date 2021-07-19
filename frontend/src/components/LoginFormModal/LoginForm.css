@@ -1,3 +1,9 @@
+.modal__container {
+  background-color: #fff;
+  display:flex;
+  flex-direction: column;
+}
+
 .login__container {
   background-color: #fff;
   display:flex;
@@ -7,7 +13,7 @@
   align-items: center;
   font-size: 1rem;
   font-weight: 700;
-  border-radius: 10px;
+  border-radius: .25rem;
   width: 22rem;
   padding-left:24px;
   padding-right: 24px;
