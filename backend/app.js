@@ -24,6 +24,7 @@ app.use(helmet({
 // Set the _csrf token and create req.csrfToken method
 app.use(cookieParser());
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(
   csurf({
