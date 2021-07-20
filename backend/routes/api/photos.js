@@ -22,6 +22,7 @@ router.get('/health', asyncHandler(async (req, res) => {
 
 // Post image
 router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
+  console.log('fokadebug2', req.user, req.body)
   const { userId, albumId, content } = req.body
   const imageUrl = await singlePublicFileUpload(req.file);
   const image = await Image.create({

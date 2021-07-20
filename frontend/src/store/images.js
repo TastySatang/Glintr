@@ -14,12 +14,6 @@ export const createImage = (image) => async dispatch => {
   formData.append("albumId", albumId);
   formData.append("content", content);
 
-  // if (images && images.length !== 0) {
-  //   for (let i = 0; i < images.length; i++) {
-  //     formData.append('images', image)
-  //   }
-  // }
-
   if (imageUrl) formData.append("image", imageUrl);
 
   const res = await csrfFetch(`/api/photos/`, {
@@ -32,6 +26,7 @@ export const createImage = (image) => async dispatch => {
 
   const data = await res.json();
   dispatch(setImage(data.user));
+  return res;
 }
 
 const initialState = { user: null };

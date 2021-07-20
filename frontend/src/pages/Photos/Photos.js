@@ -13,16 +13,9 @@ const CreateImage = () => {
   const image = useSelector((state) => state.session.image)
 
   const handleSubmit = e => {
-    console.log(image)
     e.preventDefault();
     let newErrors = [];
-    dispatch(createImage({ userId, albumId, imageUrl, content }))
-      .then(() => {
-        setUserId(1);
-        setAlbumId(null);
-        setImageUrl(null);
-        setContent('');
-      })
+    dispatch(createImage({ userId: 1, albumId: 1, imageUrl, content }))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -46,6 +39,7 @@ const CreateImage = () => {
           <label>content
             <textarea
               type="text" placeholder='content'
+              onChange={e => setContent(e.target.value)}
             />
           </label>
           <label>files
