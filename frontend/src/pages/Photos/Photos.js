@@ -2,20 +2,22 @@ import { useState } from 'react'
 import { createImage } from '../../store/images'
 import { useDispatch, useSelector } from 'react-redux'
 
-const CreateImage = () => {
+const PostImage = () => {
   const [userId, setUserId] = useState(null);
-  const [albumId, setAlbumId] = useState(null);
+  const [albumId, setAlbumId] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
-  const image = useSelector((state) => state.session.image)
+  const image = useSelector((state) => state.image)
+  const user = useSelector((state) => state.session.user)
 
   const handleSubmit = e => {
     e.preventDefault();
+
     let newErrors = [];
-    dispatch(createImage({ userId: 1, albumId: 1, imageUrl, content }))
+    dispatch(createImage({ userId: user.id, albumId, imageUrl, content }))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -54,4 +56,4 @@ const CreateImage = () => {
   )
 }
 
-export default CreateImage;
+export default PostImage;
