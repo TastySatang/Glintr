@@ -7,17 +7,6 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT
   }, {});
 
-  Image.prototype.post = function ({ userId, albumId, imageUrl, content }) {
-    const image = await Image.create({
-      userId,
-      albumId,
-      imageUrl,
-      content
-    });
-
-    return await Image.scope
-  }
-
   Image.associate = function (models) {
     // associations can be defined here
     Image.belongsTo(models.User, { foreign: 'userId' })

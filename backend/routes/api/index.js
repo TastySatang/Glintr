@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users');
+const photosRouter = require('./photos.js')
 const asyncHandler = require('express-async-handler');
 const { User } = require('../../db/models');
 const { setTokenCookie } = require('../../utils/auth.js');
@@ -8,8 +9,8 @@ const { restoreUser } = require('../../utils/auth.js');
 const { requireAuth } = require('../../utils/auth.js');
 
 router.use('/session', sessionRouter);
-
 router.use('/users', usersRouter);
+router.use('/photos', photosRouter);
 
 // GET /api/set-token-cookie
 router.get('/set-token-cookie', asyncHandler(async (req, res) => {
