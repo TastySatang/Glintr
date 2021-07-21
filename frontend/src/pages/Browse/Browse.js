@@ -1,13 +1,14 @@
 import { useEffect } from "react"
 import { getImages } from "../../store/images";
 
+import "./Browse.css"
 
 const { useDispatch, useSelector } = require("react-redux")
 
 const Browse = () => {
   const dispatch = useDispatch();
   const images = useSelector((state) => Object.values(state.image))
-  const users = useSelector((state) => Object.values(state.session))
+  const users = useSelector((state) => (state.session))
 
   useEffect(() => {
     dispatch(getImages());
@@ -20,18 +21,33 @@ const Browse = () => {
 
   return (
     <>
-      <div className='photos__container' >
+      <div className='content'>
         <h1>In Browse</h1>
         <button onClick={handleButtonClick}>console</button>
-        {/* {images.map((image, idx) => {
-          console.log('inside imagemap image:', image);
-          console.log('inside imagemap images:', images);
+        <div className='photos__container' >
+          {images.map((image, idx) => {
 
-          return (
-            <div key={idx} className='image holder' ></div>
-          );
+            const background = {
+              width: '100%',
+              height: "400px",
+              backgroundImage: `url(${image.imageUrl})`,
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: '50%',
+            }
 
-        })} */}
+            return (
+              <>
+                <div key={idx} className='image__holder'>
+                  <img className='image' alt={idx} key={idx} src={image.imageUrl} />
+                </div>
+                {/* <div key={idx} className='image__holder' style={background} >
+              </div> */}
+              </>
+            );
+
+          })}
+        </div>
       </div>
     </>
 

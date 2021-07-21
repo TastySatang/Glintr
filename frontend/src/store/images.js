@@ -45,10 +45,15 @@ const imageReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_IMAGE:
-      console.log('newstate', newState);
-      newState = Object.assign({}, state);
-      newState.id = action.payload;
+      newState = { ...state };
+      action.payload.forEach((image) => {
+        newState[image.id] = image;
+      });
       return newState;
+    // console.log('newstate', newState);
+    // newState = Object.assign({}, state);
+    // newState.id = action.payload;
+    // return newState;
     default:
       return state;
   }
