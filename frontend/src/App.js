@@ -27,7 +27,6 @@ function App() {
       </Route>
       {isLoaded && (
         <Switch>
-
           <Route path="/photos/new">
             <Photos />
           </Route>

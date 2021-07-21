@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { getImages } from "../../store/images";
 
+
 const { useDispatch, useSelector } = require("react-redux")
 
 const Browse = () => {
@@ -19,8 +20,19 @@ const Browse = () => {
 
   return (
     <>
-      <h1>In Browse</h1>
-      <button onClick={handleButtonClick}>console</button>
+      <div className='photos__container' >
+        <h1>In Browse</h1>
+        <button onClick={handleButtonClick}>console</button>
+        {/* {images.map((image, idx) => {
+          console.log('inside imagemap image:', image);
+          console.log('inside imagemap images:', images);
+
+          return (
+            <div key={idx} className='image holder' ></div>
+          );
+
+        })} */}
+      </div>
     </>
 
   )

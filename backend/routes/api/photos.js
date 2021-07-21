@@ -46,8 +46,15 @@ router.get('/', asyncHandler(async (req, res) => {
 // Update image
 router.put('/:id', asyncHandler(async (req, res) => {
   const id = req.params.id;
-  const photo = await Image.findByPk(id);
-  return res.json(photo);
+  const content = req.body.content
+  console.log('inside update image api', { content, id });
+
+  const photo = await Image.update(
+    content,
+    { where: { id } }
+  )
+
+  return res.json({ photo });
 }))
 
 // Delete image
