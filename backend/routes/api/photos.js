@@ -32,7 +32,7 @@ router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
     content,
   });
 
-  return res.json({ imageUrl });
+  return res.json({ image });
 }));
 
 // Read image
