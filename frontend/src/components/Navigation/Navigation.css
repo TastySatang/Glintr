@@ -20,15 +20,24 @@
 .glintr-logo-container {
   display: block;
   text-align: center;
+  margin-right: 20px;
 }
 
 .glintr-logo-container img {
   width: 98px;
   align-self: center;
   justify-self: center;
-
 }
 
+.navbar__browse {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  text-decoration: none;
+  color: white;
+}
 .emptyholder {
   width: 100%;
 }
