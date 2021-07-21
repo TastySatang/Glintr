@@ -7,7 +7,6 @@ const setImage = (image) => ({
   payload: image,
 })
 
-
 export const createImage = (image) => async dispatch => {
   const { userId, albumId, imageUrl, content } = image;
   const formData = new FormData();
@@ -29,6 +28,15 @@ export const createImage = (image) => async dispatch => {
   console.log('monkey', data.image)
   dispatch(setImage(data.image));
   return res;
+}
+
+export const getImages = () => async dispatch => {
+  const res = await fetch('/api/photos');
+
+  if (res.ok) {
+    const images = await res.json();
+    dispatch(setImage(images))
+  }
 }
 
 const initialState = {};

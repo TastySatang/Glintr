@@ -3,7 +3,6 @@ import { createImage } from '../../store/images'
 import { useDispatch, useSelector } from 'react-redux'
 
 const PostImage = () => {
-  const [userId, setUserId] = useState(null);
   const [albumId, setAlbumId] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
   const [content, setContent] = useState('');
