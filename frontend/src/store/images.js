@@ -7,6 +7,7 @@ const setImage = (image) => ({
   payload: image,
 })
 
+
 export const createImage = (image) => async dispatch => {
   const { userId, albumId, imageUrl, content } = image;
   const formData = new FormData();
@@ -25,18 +26,20 @@ export const createImage = (image) => async dispatch => {
   });
 
   const data = await res.json();
-  dispatch(setImage(data.user));
+  console.log('monkey', data.image)
+  dispatch(setImage(data.image));
   return res;
 }
 
-const initialState = { user: null };
+const initialState = {};
 
 const imageReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case SET_IMAGE:
+      console.log('newstate', newState);
       newState = Object.assign({}, state);
-      newState.image = action.payload;
+      newState.id = action.payload;
       return newState;
     default:
       return state;
