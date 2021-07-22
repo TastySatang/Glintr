@@ -14,21 +14,14 @@ const PostImage = () => {
 
   const user = useSelector((state) => state.session.user)
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    let newErrors = [];
-    dispatch(createImage({ userId: user.id, albumId, imageUrl, content }))
-      .then(() => history.push('/photos'))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          newErrors = data.errors;
-          setErrors(newErrors);
-        }
-      });
-
-
+    const created = await dispatch(createImage({ userId: user.id, albumId, imageUrl, content }))
+    console.log(created);
+    if (created) {
+      history.push(`/photos`)
+    }
   };
 
   const updateFile = (e) => {

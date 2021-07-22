@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { editContent, getImage } from "../../store/images";
+import { editContent, getImage, deleteImage } from "../../store/images";
 
 import './Browse.css'
 
 const ImgPage = (isLoaded) => {
+  let history = useHistory();
   const { imageId } = useParams();
   const dispatch = useDispatch();
 
@@ -13,29 +14,51 @@ const ImgPage = (isLoaded) => {
 
   const image = useSelector(state => (state.image[imageId]))
   const sessionUser = useSelector(state => (state.session.user))
+
   useEffect(() => {
     dispatch(getImage(imageId))
 
   }, [dispatch])
 
-  let sessionEdit;
 
-  const handleSubmit = (e) => {
+  const handleEditSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(editContent(newContent))
+    console.log({ id: imageId, content: newContent })
+    dispatch(editContent({ id: imageId, content: newContent }));
   }
 
+  const handleDeleteSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(imageId)
+    const deletedImage = dispatch(deleteImage(imageId))
+      .then(() => history.push('/photos'));
+    // if (deletedImage) {
+    //   history.push('/photos');
+    // }
+
+  }
+
+  let sessionEdit;
   if (sessionUser.id === image.userId) {
     sessionEdit = (
-      <form onSubmit=''>
-        <input
-          type='text'
-          placeholder='change content'
-          onChange={e => setNewContent(e.target.value)}
-        />
-        <button>Edit</button>
-      </form>
+      <>
+        <form onSubmit={handleEditSubmit}>
+          <input
+            type='text'
+            placeholder='change content'
+            onChange={e => setNewContent(e.target.value)}
+          />
+          <button>Edit</button>
+        </form>
+        <button
+          className='delete'
+          onClick={() => {
+            dispatch(deleteImage(imageId))
+            history.push('/photos')
+          }}>Delete image</button>
+      </>
     )
   } else {
     sessionEdit = (

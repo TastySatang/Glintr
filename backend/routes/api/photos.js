@@ -61,22 +61,19 @@ router.put('/:id', asyncHandler(async (req, res) => {
     { where: { id } }
   )
 
+  const photoTEE = await Image.findByPk(id);
+  await photoTEE.update(req.body)
+
+  console.log('inside update image api', photo)
   return res.json({ photo });
 }))
 
 // Delete image
 router.delete('/:id', asyncHandler(async (req, res) => {
   const id = req.params.id;
-  const { userId } = req.session.user;
 
-  const photo = await Image.findOne({
-    where: {
-      id,
-      userId,
-    },
-  });
-
-  await photo.destroy();
+  await Image.destroy({ where: { id } });
+  return res.json({ id });
 }))
 
 module.exports = router;

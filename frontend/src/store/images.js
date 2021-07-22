@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD = "image/LOAD"
 const ADD_ONE = "image/ADD_ONE";
 const SET_IMAGE = 'image/SET_IMAGE'
+const DELETE = 'image/DELETE'
 
 const load = list => ({
   type: LOAD,
@@ -12,6 +13,11 @@ const load = list => ({
 const addOne = image => ({
   type: ADD_ONE,
   image,
+})
+
+const removeOne = imageId => ({
+  type: DELETE,
+  imageId
 })
 
 const setImage = (image) => ({
@@ -38,7 +44,7 @@ export const createImage = (image) => async dispatch => {
 
   const data = await res.json();
   console.log('monkey', data.image)
-  dispatch(setImage(data.image));
+  dispatch(addOne(data.image));
   return res;
 }
 
@@ -61,6 +67,7 @@ export const getImage = (id) => async dispatch => {
 }
 
 export const editContent = (payload) => async dispatch => {
+  console.log('inside edit store', payload.id)
   const res = await csrfFetch(`/api/photos/${payload.id}`, {
     method: "PUT",
     headers: { 'Content-Type': 'application/json' },
@@ -69,8 +76,21 @@ export const editContent = (payload) => async dispatch => {
 
   if (res.ok) {
     const image = await res.json();
+    console.log(image);
     dispatch(addOne(image))
     return image;
+  }
+}
+
+export const deleteImage = id => async dispatch => {
+  console.log('inside store', id);
+  const res = await csrfFetch(`/api/photos/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (res.ok) {
+    await res.json();
+    dispatch(removeOne(id))
   }
 }
 
@@ -100,6 +120,14 @@ const imageReducer = (state = initialState, action) => {
           ...action.image
         }
       }
+    case SET_IMAGE: {
+      return { ...state, user: action.payload };
+    }
+    case DELETE: {
+      const newState = { ...state };
+      delete newState[action.imageId]
+      return newState
+    }
     default:
       return state;
   }
