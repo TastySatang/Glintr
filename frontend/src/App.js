@@ -7,6 +7,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import MainPage from "./pages/MainPage/MainPage";
 import Photos from "./pages/Photos/Photos"
 import Browse from './pages/Browse/Browse'
+import ImgPage from './pages/Browse/ImgPage'
 
 import * as sessionActions from "./store/session";
 
@@ -27,18 +28,10 @@ function App() {
       </Route>
       {isLoaded && (
         <Switch>
-          <Route path="/photos/new">
-            <Photos />
-          </Route>
-          <Route path="/photos">
-            <Browse />
-          </Route>
-          {/* <Route path="/login">
-            <LoginFormPage />
-          </Route> */}
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
+          <Route path="/photos/:imageId" exact component={ImgPage} />
+          <Route path="/photos" exact component={Browse} />
+          <Route path="/photos/new" exact component={Photos} />
+          <Route path="/signup" exact component={SignupFormPage} />
         </Switch>
       )}
     </>
