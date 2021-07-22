@@ -1,10 +1,22 @@
 import { csrfFetch } from "./csrf";
 
-const SET_IMAGE = "image/setImage";
+const LOAD = "image/LOAD"
+const ADD_ONE = "image/ADD_ONE";
+const SET_IMAGE = 'image/SET_IMAGE'
+
+const load = list => ({
+  type: LOAD,
+  list,
+});
+
+const addOne = image => ({
+  type: ADD_ONE,
+  image,
+})
 
 const setImage = (image) => ({
   type: SET_IMAGE,
-  payload: image,
+  image,
 })
 
 export const createImage = (image) => async dispatch => {
@@ -31,11 +43,20 @@ export const createImage = (image) => async dispatch => {
 }
 
 export const getImages = () => async dispatch => {
-  const res = await fetch('/api/photos');
+  const res = await csrfFetch('/api/photos');
 
   if (res.ok) {
     const images = await res.json();
-    dispatch(setImage(images))
+    dispatch(load(images))
+  }
+}
+
+export const getImage = (id) => async dispatch => {
+  const res = await csrfFetch(`/api/photos/${id}`)
+
+  if (res.ok) {
+    const image = await res.json();
+    dispatch(addOne(image));
   }
 }
 
@@ -44,16 +65,27 @@ const initialState = {};
 const imageReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
-    case SET_IMAGE:
+    case LOAD:
       newState = { ...state };
-      action.payload.forEach((image) => {
+      action.list.forEach((image) => {
         newState[image.id] = image;
       });
       return newState;
-    // console.log('newstate', newState);
-    // newState = Object.assign({}, state);
-    // newState.id = action.payload;
-    // return newState;
+    case ADD_ONE:
+      if (!state[action.image.id]) {
+        const newState = {
+          ...state,
+          [action.image.id]: action.image
+        };
+        return newState
+      }
+      return {
+        ...state,
+        [action.image.id]: {
+          ...state[action.image.id],
+          ...action.image
+        }
+      }
     default:
       return state;
   }

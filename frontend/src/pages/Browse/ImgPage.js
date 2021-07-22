@@ -1,34 +1,38 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
-import { getImages } from "../../store/images";
+import { useDispatch, useSelector } from "react-redux";
+import { getImage } from "../../store/images";
 
+import './Browse.css'
 
-const ImgPage = () => {
-  const dispatch = useDispatch();
+const ImgPage = (isLoaded) => {
   const { imageId } = useParams();
-  const image = useSelector(state => {
-    return state.image[imageId]
-  })
+  const dispatch = useDispatch();
+  const image = useSelector(state => (state.image))
 
   useEffect(() => {
-    dispatch(getImages());
-
+    dispatch(getImage(imageId))
   }, [dispatch])
 
   const handleButtonClick = () => {
-    console.log('image', image.imageUrl)
+    console.log('image', image)
   }
 
-  return (
+  const pumper = (
     <>
       <div className='content'>
         <div className='single__imgcontainer'>
-          {/* <img src={image.imageUrl} alt='post' /> */}
-          {/* <h1>inside image {image.imageUrl}</h1> */}
           <button onClick={handleButtonClick}>BUTTON HERE</button>
+          <img src={image[imageId].imageUrl} alt='post' />
+
         </div>
       </div>
+    </>
+  )
+
+  return (
+    <>
+      {isLoaded && pumper}
     </>
   )
 }

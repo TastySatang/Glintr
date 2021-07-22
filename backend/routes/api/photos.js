@@ -9,6 +9,7 @@ const {
   singleMulterUpload,
   singlePublicFileUpload,
 } = require("../../awsS3");
+const { image } = require('faker');
 
 const router = express.Router();
 
@@ -35,12 +36,18 @@ router.post('/', singleMulterUpload('image'), asyncHandler(async (req, res) => {
   return res.json({ image });
 }));
 
-// Read image
+// Read images
 router.get('/', asyncHandler(async (req, res) => {
   const images = await Image.findAll();
 
   console.log(images);
   res.json(images);
+}))
+
+// Get single image
+router.get('/:id', asyncHandler(async (req, res) => {
+  const image = await image.findByPk(req.params.id);
+  return res.json(image);
 }))
 
 // Update image

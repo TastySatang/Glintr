@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { createImage } from '../../store/images'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -8,8 +9,9 @@ const PostImage = () => {
   const [content, setContent] = useState('');
   const [errors, setErrors] = useState([]);
 
+  let history = useHistory();
   const dispatch = useDispatch();
-  // const image = useSelector((state) => state.image)
+
   const user = useSelector((state) => state.session.user)
 
   const handleSubmit = e => {
@@ -17,6 +19,7 @@ const PostImage = () => {
 
     let newErrors = [];
     dispatch(createImage({ userId: user.id, albumId, imageUrl, content }))
+      .then(() => history.push('/photos'))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -24,6 +27,8 @@ const PostImage = () => {
           setErrors(newErrors);
         }
       });
+
+
   };
 
   const updateFile = (e) => {
