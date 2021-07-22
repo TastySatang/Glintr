@@ -75,9 +75,10 @@ export const editContent = (payload) => async dispatch => {
   });
 
   if (res.ok) {
+    console.log('afterapicall', res);
     const image = await res.json();
     console.log(image);
-    dispatch(addOne(image))
+    dispatch(addOne({ image }))
     return image;
   }
 }

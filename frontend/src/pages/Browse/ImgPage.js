@@ -17,31 +17,24 @@ const ImgPage = (isLoaded) => {
 
   useEffect(() => {
     dispatch(getImage(imageId))
+  }, [dispatch, imageId])
 
-  }, [dispatch])
 
-
-  const handleEditSubmit = (e) => {
+  const handleEditSubmit = async (e) => {
     e.preventDefault();
 
-    console.log({ id: imageId, content: newContent })
-    dispatch(editContent({ id: imageId, content: newContent }));
+    const payload = {
+      id: imageId,
+      content: newContent
+    }
+
+    const updatedImage = await dispatch(editContent(payload));
+    console.log('after await dispatch', updatedImage);
   }
 
-  const handleDeleteSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(imageId)
-    const deletedImage = dispatch(deleteImage(imageId))
-      .then(() => history.push('/photos'));
-    // if (deletedImage) {
-    //   history.push('/photos');
-    // }
-
-  }
 
   let sessionEdit;
-  if (sessionUser.id === image.userId) {
+  if (sessionUser?.id === image?.userId) {
     sessionEdit = (
       <>
         <form onSubmit={handleEditSubmit}>
@@ -79,12 +72,12 @@ const ImgPage = (isLoaded) => {
     <>
       <div className='single__content'>
         <div className='single__imgcontainer'>
-          <img className='singleImage' src={image.imageUrl} alt='post' />
+          <img className='singleImage' src={image?.imageUrl} alt='post' />
         </div>
         <div className='single__postcontainer'>
           <div className='leftview'>
             <h2 className='single__imageContent'>
-              {image.content}
+              {image?.content}
               {sessionEdit}
             </h2>
 

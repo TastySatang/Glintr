@@ -56,16 +56,16 @@ router.put('/:id', asyncHandler(async (req, res) => {
   const content = req.body.content
   console.log('inside update image api', { content, id });
 
-  const photo = await Image.update(
-    content,
-    { where: { id } }
-  )
+  // const photo = await Image.update(
+  //   content,
+  //   { where: { id } }
+  // )
 
   const photoTEE = await Image.findByPk(id);
   await photoTEE.update(req.body)
 
-  console.log('inside update image api', photo)
-  return res.json({ photo });
+  console.log('inside update image api', photoTEE)
+  return res.json(photoTEE);
 }))
 
 // Delete image
