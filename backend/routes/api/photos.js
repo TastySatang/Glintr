@@ -4,17 +4,16 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth')
 const { handleValidationErrors } = require('../../utils/validation')
+
 const { Image } = require("../../db/models");
+const { Comment } = require('../../db/models')
 const {
   singleMulterUpload,
   singlePublicFileUpload,
 } = require("../../awsS3");
-const { image } = require('faker');
 
 const router = express.Router();
 
-const validatePost = [
-]
 
 // to make sure environment is properly set up
 router.get('/health', asyncHandler(async (req, res) => {
@@ -74,6 +73,34 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 
   await Image.destroy({ where: { id } });
   return res.json({ id });
+}))
+
+
+// Getting comments pertaining to the image
+router.get('/:id/comments', asyncHandler(async (req, res) => {
+  const imageId = req.params.id
+  const comments = await Comment.findAll({
+    where: {
+      imageId
+    },
+  })
+
+  return res.json(comments);
+}));
+
+// POSTING comments pertaining to the image
+// item needs userId, imageId, and comment itself
+router.post('/:id/comments', asyncHandler(async (req, res) => {
+  const { userId, text } = req.body
+  const imageId = req.params.id
+  const comment = await Comment.create({
+    userId,
+    imageId,
+    comment,
+  })
+
+  console.log(res.json(comment));
+  return res.json(comment)
 }))
 
 module.exports = router;
