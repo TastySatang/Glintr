@@ -29,10 +29,19 @@
   justify-self: center;
 }
 
+.links{
+  position: relative;
+  margin-right: 10px;
+}
+
 .navbar__browse {
   text-decoration: none;
   color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
+
 
 .active {
   text-decoration: none;

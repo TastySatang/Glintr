@@ -46,7 +46,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
 // Get single image
 router.get('/:id', asyncHandler(async (req, res) => {
-  const image = await image.findByPk(req.params.id);
+  const image = await Image.findByPk(req.params.id);
   return res.json(image);
 }))
 

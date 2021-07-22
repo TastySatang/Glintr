@@ -60,6 +60,20 @@ export const getImage = (id) => async dispatch => {
   }
 }
 
+export const editContent = (payload) => async dispatch => {
+  const res = await csrfFetch(`/api/photos/${payload.id}`, {
+    method: "PUT",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (res.ok) {
+    const image = await res.json();
+    dispatch(addOne(image))
+    return image;
+  }
+}
+
 const initialState = {};
 
 const imageReducer = (state = initialState, action) => {

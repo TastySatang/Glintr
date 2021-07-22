@@ -46,6 +46,54 @@ body,html {
   box-shadow: 3px 3px 10px black;
 }
 
+.single__content{
+  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  font-weight: 100;
+  font-size: 13px;
+  background-color: #f3f5f6;
+  position: absolute;
+  height: 100vh;
+  box-sizing: border-box;
+  top: 50px;
+  display: block;
+}
+
 .single__imgcontainer {
+  width: 100%;
+  background-color: #202124;
+  height: 800px;
+  display: flex;
+  align-items: center;
+}
+
+.singleImage {
   max-height: 700px;
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: 50%;
+  transition: .10s;
+}
+
+.single__postcontainer {
+position: relative;
+display:flex;
+width: 1060px;
+margin-right: auto;
+margin-left: auto;
+}
+
+.leftview {
+  width: 500px;
+  margin-right: 60px;
+}
+
+.single__imageContent {
+  margin-top: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cfd6d9;
+}
+
+.rightview {
+  width: 500px;
 }
