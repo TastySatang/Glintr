@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-
+import { editContent } from "../../store/images";
 
 const EditPhotoForm = ({ image, hideForm }) => {
   const dispatch = useDispatch();
