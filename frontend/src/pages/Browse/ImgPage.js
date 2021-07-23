@@ -4,22 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { editContent, getImage, deleteImage } from "../../store/images";
 import CommentsComponent from "../../components/Comments";
+import EditCommentForm from "../../components/Comments/EditCommentForm";
 
 import './Browse.css'
 
 const ImgPage = () => {
   let history = useHistory();
   const { imageId } = useParams();
-  const dispatch = useDispatch();
-
   const [newContent, setNewContent] = useState('');
+  const [editCommentId, setEditCommentId] = useState(null);
+  const dispatch = useDispatch();
 
   const image = useSelector(state => (state.image[imageId]))
   const sessionUser = useSelector(state => (state.session.user))
 
   useEffect(() => {
     dispatch(getImage(imageId))
-  }, [dispatch, imageId])
+    setEditCommentId(null)
+  }, [imageId])
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +35,19 @@ const ImgPage = () => {
     console.log('after await dispatch', updatedImage);
   }
 
+  let content;
+  //for editing comments itself while logged in as the commenter
+  if (editCommentId) {
+    content = (
+      <EditCommentForm image={image} commentId={editCommentId} hideForm={() => setEditCommentId(null)} />
+    )
+  } else {
+    content = (
+      null
+    )
+  }
 
+  // for editing image itself while logged in as the user
   let sessionEdit;
   if (sessionUser?.id === image?.userId) {
     sessionEdit = (
@@ -80,7 +94,7 @@ const ImgPage = () => {
               {image?.content}
               {sessionEdit}
             </h2>
-            <CommentsComponent image={image} />
+            <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
           </div>
           <div className='rightview'></div>
         </div>

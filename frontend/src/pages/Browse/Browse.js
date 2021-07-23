@@ -15,15 +15,15 @@ const Browse = () => {
     dispatch(getImages());
   }, [dispatch])
 
-  const handleButtonClick = () => {
-    console.log('images', images)
-  }
+  // const handleButtonClick = () => {
+  //   console.log('images', images)
+  // }
 
   return (
     <>
       <div className='content'>
         <h1>Explore</h1>
-        <button onClick={handleButtonClick}>BUTTON HERE</button>
+        {/* <button onClick={handleButtonClick}>BUTTON HERE</button> */}
         <div className='photos__container' >
           {images.map((image, idx) => {
             return (
