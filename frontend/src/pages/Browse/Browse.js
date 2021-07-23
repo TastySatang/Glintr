@@ -5,8 +5,6 @@ import { getImages } from "../../store/images";
 
 import "./Browse.css"
 
-
-
 const Browse = () => {
   const dispatch = useDispatch();
   const images = useSelector((state) => Object.values(state.image))
