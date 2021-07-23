@@ -71,6 +71,8 @@ router.put('/:id', asyncHandler(async (req, res) => {
 router.delete('/:id', asyncHandler(async (req, res) => {
   const id = req.params.id;
 
+  await Comment.destroy({ where: { imageId: id } })
+
   await Image.destroy({ where: { id } });
   return res.json({ id });
 }))
