@@ -51,6 +51,7 @@ export const createComment = (data, imageId) => async dispatch => {
 }
 
 export const updateComment = payload => async dispatch => {
+  console.log('inside update thunk', payload)
   const res = await csrfFetch(`/api/comments/${payload.id}`, {
     method: 'put',
     headers: { 'Content-Type': 'application/json' },

@@ -13,11 +13,15 @@ router.get('/health', asyncHandler(async (req, res) => {
 router.put('/:id', asyncHandler(async (req, res) => {
   const id = req.params.id;
   const { text } = req.body;
+  const comment = text;
+  console.log('insideapi', req.body)
 
-  const comment = await Comment.findByPk(id);
-  await comment.update(req.body)
+  const upComment = await Comment.update(
+    comment,
+    { where: { id } }
+  )
 
-  return res.json(comment);
+  return res.json(upComment);
 }))
 
 // delete requests for comments

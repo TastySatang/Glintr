@@ -15,8 +15,10 @@ const EditCommentForm = ({ commentId, hideForm }) => {
       id: commentId,
       text
     };
+    console.log('insidehandlesubmit', payload)
 
     const updatedComment = await dispatch(updateComment(payload))
+
     if (updatedComment) {
       hideForm();
     }
