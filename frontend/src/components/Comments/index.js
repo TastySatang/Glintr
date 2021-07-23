@@ -34,17 +34,15 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
       {comments.map((comment, idx) => {
         const rightUser = (comment.userId) === (user?.id)
         return (
-          <>
-            <div key={idx}>
-              <p key={idx}>{comment.comment}</p>
-              {rightUser && (
-                <button onClick={() => {
-                  setEditCommentId(comment.id)
-                  console.log(comment.id)
-                }}>Edit</button>
-              )}
-            </div>
-          </>
+          <div key={idx}>
+            <p>{comment.comment}</p>
+            {rightUser && (
+              <button onClick={() => {
+                setEditCommentId(comment.id)
+                console.log(comment.id)
+              }}>Edit</button>
+            )}
+          </div>
         )
       })}
       <form onSubmit={handleCommentSubmit}>

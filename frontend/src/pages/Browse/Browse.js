@@ -25,13 +25,13 @@ const Browse = () => {
         <div className='photos__container' >
           {images.map((image, idx) => {
             return (
-              <>
-                <div key={idx} className='image__holder'>
-                  <Link key={idx} to={`/photos/${image.id}`} >
-                    <img className='image' alt={idx} key={idx} src={image.imageUrl} />
-                  </Link>
-                </div>
-              </>
+
+              <div key={idx} className='image__holder'>
+                <Link to={`/photos/${image.id}`} >
+                  <img className='image' alt={idx} key={idx} src={image.imageUrl} />
+                </Link>
+              </div>
+
             );
           })}
         </div>
