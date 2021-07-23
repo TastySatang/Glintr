@@ -37,6 +37,7 @@ export const getComments = id => async dispatch => {
 }
 
 export const createComment = (data, imageId) => async dispatch => {
+  console.log('entered store', data, imageId)
   const res = await csrfFetch(`/api/photos/${imageId}/comments`, {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
@@ -59,13 +60,13 @@ export const updateComment = payload => async dispatch => {
   });
 
   if (res.ok) {
-    const comment = await res.json();
-    dispatch(add(comment));
-    return comment;
+    const newComment = await res.json();
+    dispatch(add(newComment));
+    return newComment;
   }
 }
 
-export const deleteItem = id => async dispatch => {
+export const deleteComment = id => async dispatch => {
   const res = await csrfFetch(`/api/comments/${id}`, {
     method: 'delete',
   });

@@ -93,16 +93,16 @@ router.get('/:id/comments', asyncHandler(async (req, res) => {
 // POSTING comments pertaining to the image
 // item needs userId, imageId, and comment itself
 router.post('/:id/comments', asyncHandler(async (req, res) => {
-  const { userId, text } = req.body
+  const { userId, comment } = req.body
   const imageId = req.params.id
-  const comment = await Comment.create({
+  const newComment = await Comment.create({
     userId,
     imageId,
     comment,
   })
 
-  console.log(res.json(comment));
-  return res.json(comment)
+  console.log(res.json(newComment));
+  return res.json(newComment)
 }))
 
 module.exports = router;

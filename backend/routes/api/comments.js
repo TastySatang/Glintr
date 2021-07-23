@@ -12,8 +12,7 @@ router.get('/health', asyncHandler(async (req, res) => {
 // edit requests for comments
 router.put('/:id', asyncHandler(async (req, res) => {
   const id = req.params.id;
-  const { text } = req.body;
-  const comment = text;
+  const text = req.body;
   console.log('insideapi', req.body)
 
   const upComment = await Comment.update(

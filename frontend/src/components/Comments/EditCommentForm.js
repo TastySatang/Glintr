@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { updateComment } from "../../store/comments";
+import { updateComment, deleteComment } from "../../store/comments";
 
 const EditCommentForm = ({ commentId, hideForm }) => {
   const comment = useSelector(state => state.comment[commentId])
@@ -13,7 +13,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
 
     const payload = {
       id: commentId,
-      text
+      comment: text
     };
     console.log('insidehandlesubmit', payload)
 
@@ -27,7 +27,10 @@ const EditCommentForm = ({ commentId, hideForm }) => {
   const handleCancelClick = e => {
     e.preventDefault();
     console.log(typeof commentId)
+    hideForm();
   };
+
+
 
   return (
     <div>
@@ -39,6 +42,10 @@ const EditCommentForm = ({ commentId, hideForm }) => {
         />
         <button type="submit">update</button>
         <button type="button" onClick={handleCancelClick}>cancel</button>
+        <button type='button' onClick={() => {
+          dispatch(deleteComment(commentId))
+          hideForm();
+        }}>Delete</button>
       </form>
     </div>
   )
