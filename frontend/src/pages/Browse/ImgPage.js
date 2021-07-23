@@ -21,7 +21,8 @@ const ImgPage = () => {
   useEffect(() => {
     dispatch(getImage(imageId))
     setEditCommentId(null)
-  }, [imageId])
+    console.log('useEffect ran')
+  }, [dispatch, imageId])
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +44,7 @@ const ImgPage = () => {
     )
   } else {
     content = (
-      null
+      <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
     )
   }
 
@@ -94,7 +95,7 @@ const ImgPage = () => {
               {image?.content}
               {sessionEdit}
             </h2>
-            <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
+            {content}
           </div>
           <div className='rightview'></div>
         </div>

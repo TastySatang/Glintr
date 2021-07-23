@@ -9,7 +9,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
   const [text, setText] = useState(comment.comment)
 
   const handleEditSubmit = async e => {
-    e.preventDefautlt();
+    e.preventDefault();
 
     const payload = {
       id: commentId,
@@ -24,7 +24,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
 
   const handleCancelClick = e => {
     e.preventDefault();
-    hideForm();
+    console.log(typeof commentId)
   };
 
   return (

@@ -11,28 +11,30 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
     dispatch(getComments(image?.id));
   }, [dispatch, image?.id])
 
-  const handleButtonClick = () => {
-    console.log('image', image)
-    console.log(comments)
-  }
+  // const handleButtonClick = () => {
+  //   console.log('image', image)
+  //   console.log(comments)
+  // }
 
   return (
     <>
       {comments.map((comment, idx) => {
         const rightUser = (comment.userId) === (user?.id)
-        console.log(rightUser)
         return (
           <>
             <div key={idx}>
               <p key={idx}>{comment.comment}</p>
             </div>
             {rightUser && (
-              <button onClick={() => setEditCommentId(comment.id)}>Edit</button>
+              <button onClick={() => {
+                setEditCommentId(comment.id)
+                console.log(comment.id)
+              }}>Edit</button>
             )}
           </>
         )
       })}
-      <button onClick={handleButtonClick}>CommentsButton</button>
+      {/* <button onClick={handleButtonClick}>CommentsButton</button> */}
     </>
   )
 }

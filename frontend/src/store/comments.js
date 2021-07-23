@@ -50,11 +50,11 @@ export const createComment = (data, imageId) => async dispatch => {
   }
 }
 
-export const updateComment = data => async dispatch => {
-  const res = await csrfFetch(`/api/comments/${data.id}`, {
+export const updateComment = payload => async dispatch => {
+  const res = await csrfFetch(`/api/comments/${payload.id}`, {
     method: 'put',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
+    body: JSON.stringify(payload),
   });
 
   if (res.ok) {
