@@ -21,10 +21,9 @@ const add = comment => ({
   comment,
 })
 
-const remove = (commentId, imageId) => ({
+const remove = (commentId) => ({
   type: REMOVE_COMMENT,
   commentId,
-  imageId,
 })
 
 export const getComments = id => async dispatch => {
@@ -72,8 +71,8 @@ export const deleteComment = id => async dispatch => {
   });
 
   if (res.ok) {
-    const comment = await res.json();
-    dispatch(remove(comment.id, comment.imageId));
+    await res.json();
+    dispatch(remove(id));
   }
 }
 
