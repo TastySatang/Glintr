@@ -30,7 +30,7 @@ function App() {
         <Switch>
           <Route path="/photos" exact component={Browse} />
           <Route path="/photos/new" exact component={Photos} />
-          <Route path="/photos/:imageId" exact component={ImgPage} isLoaded={isLoaded} />
+          <Route path="/photos/:imageId" exact component={ImgPage} />
           <Route path="/signup" exact component={SignupFormPage} />
         </Switch>
       )}

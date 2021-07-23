@@ -104,6 +104,9 @@ const commentsReducer = (state = initialState, action) => {
       delete newState[action.commentId];
       return newState;
     }
+
+    default:
+      return state;
   }
 }
 

@@ -50,6 +50,7 @@ body,html {
   font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
   font-weight: 100;
   font-size: 13px;
+  width: 100%;
   background-color: #f3f5f6;
   position: absolute;
   height: 100vh;

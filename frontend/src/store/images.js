@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "image/LOAD"
 const ADD_ONE = "image/ADD_ONE";
-const SET_IMAGE = 'image/SET_IMAGE'
+// const SET_IMAGE = 'image/SET_IMAGE'
 const DELETE = 'image/DELETE'
 
 const load = list => ({
@@ -20,10 +20,10 @@ const removeOne = imageId => ({
   imageId
 })
 
-const setImage = (image) => ({
-  type: SET_IMAGE,
-  image,
-})
+// const setImage = (image) => ({
+//   type: SET_IMAGE,
+//   image,
+// })
 
 export const createImage = (image) => async dispatch => {
   const { userId, albumId, imageUrl, content } = image;
@@ -78,7 +78,7 @@ export const editContent = (payload) => async dispatch => {
     console.log('afterapicall', res);
     const image = await res.json();
     console.log(image);
-    dispatch(addOne(image))
+    dispatch(addOne({ image }))
     return image;
   }
 }
@@ -121,9 +121,9 @@ const imageReducer = (state = initialState, action) => {
           ...action.image
         }
       }
-    case SET_IMAGE: {
-      return { ...state, user: action.payload };
-    }
+    // case SET_IMAGE: {
+    //   return { ...state, user: action.payload };
+    // }
     case DELETE: {
       const newState = { ...state };
       delete newState[action.imageId]

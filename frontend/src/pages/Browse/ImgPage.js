@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { editContent, getImage, deleteImage } from "../../store/images";
+import CommentsComponent from "../../components/Comments";
 
 import './Browse.css'
 
-const ImgPage = (isLoaded) => {
+const ImgPage = () => {
   let history = useHistory();
   const { imageId } = useParams();
   const dispatch = useDispatch();
@@ -18,7 +20,6 @@ const ImgPage = (isLoaded) => {
   useEffect(() => {
     dispatch(getImage(imageId))
   }, [dispatch, imageId])
-
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
@@ -60,15 +61,14 @@ const ImgPage = (isLoaded) => {
     )
   }
 
+  // const handleButtonClick = () => {
+  //   console.log('image', image)
+  //   console.log('user', sessionUser)
+  //   console.log('bool')
+  // }
 
 
-  const handleButtonClick = () => {
-    console.log('image', image)
-    console.log('user', sessionUser)
-    console.log('bool')
-  }
-
-  const pumper = (
+  return (
     <>
       <div className='single__content'>
         <div className='single__imgcontainer'>
@@ -80,18 +80,12 @@ const ImgPage = (isLoaded) => {
               {image?.content}
               {sessionEdit}
             </h2>
-
+            <CommentsComponent image={image} />
           </div>
           <div className='rightview'></div>
         </div>
-        <button onClick={handleButtonClick}>BUTTON HERE</button>
+        {/* <button onClick={handleButtonClick}>BUTTON HERE</button> */}
       </div>
-    </>
-  )
-
-  return (
-    <>
-      {isLoaded && pumper}
     </>
   )
 }
