@@ -1,4 +1,8 @@
 {
+  "name": "authenticate-me",
+  "version": "1.0.0",
+  "description": "This is a solo project to help myself use technologies I have learned so far. (react, redux, bcrypt, express, sequelize)",
+  "main": "index.js",
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
@@ -7,5 +11,15 @@
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
     "start": "npm start --prefix backend"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TastySatang/AuthMe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TastySatang/AuthMe/issues"
+  },
+  "homepage": "https://github.com/TastySatang/AuthMe#readme"
 }
