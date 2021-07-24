@@ -50,7 +50,6 @@
   position: absolute;
   height: 100vh;
   box-sizing: border-box;
-  top: 50px;
   display: block;
 }
 
@@ -60,6 +59,7 @@
   height: 800px;
   display: flex;
   align-items: center;
+  padding-top: 0px;
 }
 
 .singleImage {
@@ -126,9 +126,11 @@ margin-left: auto;
 .contentForm {
   background-color:#F3F5F6;
   padding: 5px;
+  width: 85%;
 }
 
 .editField {
+  width: 100%;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -136,9 +138,38 @@ margin-left: auto;
   box-sizing: border-box;
   border: 1px solid #9EA4A7;
   resize: none;
+  border-radius: 3px;
 }
 
 .editField:focus {
   outline: none;
   border: 1px solid #008DDF;
+}
+
+.buttonHolder > button {
+  font: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 32px;
+  width: 100px;
+  background-color: #128fdc;
+  text-decoration: none;
+  transition: .15s;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0px 5px;
+}
+
+.buttonHolder > button:hover {
+  background-color: #1C9BE9;
+}
+
+#delete {
+  background-color: #8d0009;
+}
+
+#delete:hover {
+  background-color: #ff5c66;
 }

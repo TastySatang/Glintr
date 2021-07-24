@@ -68,15 +68,18 @@ const ImgPage = () => {
           value={newContent}
           onChange={e => setNewContent(e.target.value)}
         />
-        <button type='submit'>Update</button>
-        <button type='button' onClick={openMenu}>cancel</button>
+        <div className='buttonHolder'>
+          <button
+            type='button'
+            id='delete'
+            onClick={() => {
+              dispatch(deleteImage(imageId))
+              history.push('/photos')
+            }}>Delete Image!</button>
+          <button type='button' onClick={openMenu}>Cancel</button>
+          <button type='submit'>Done</button>
+        </div>
       </form>
-      <button
-        className='delete'
-        onClick={() => {
-          dispatch(deleteImage(imageId))
-          history.push('/photos')
-        }}>Delete image</button>
     </ div>
   )
 
