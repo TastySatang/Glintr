@@ -173,3 +173,12 @@ margin-left: auto;
 #delete:hover {
   background-color: #ff5c66;
 }
+
+.single__updatedContent {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  position: relative;
+  border-radius: 2px;
+  padding: 5px;
+}

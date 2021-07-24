@@ -3,22 +3,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createComment, getComments, } from '../../store/comments';
 
 import './Comments.css'
+import EditCommentForm from './EditCommentForm';
 
-const CommentsComponent = ({ image, setEditCommentId }) => {
+const CommentsComponent = ({ image, editCommentId, setEditCommentId }) => {
   const comments = useSelector((state) => Object.values(state.comment).filter(comment => comment.imageId === image.id));
-  const user = useSelector((state => state.session.user))
+  const sessionUser = useSelector((state => state.session.user))
+
   const [newComment, setNewComment] = useState('')
+  const [showCommentForm, setShowCommentForm] = useState(false)
   const dispatch = useDispatch();
+
+  const openMenu = () => {
+    setShowCommentForm(!showCommentForm);
+    console.log(showCommentForm)
+  }
 
   useEffect(() => {
     dispatch(getComments(image?.id));
   }, [dispatch, image?.id])
 
+
+
   const handleCommentSubmit = async e => {
     e.preventDefault();
 
     let data = {
-      userId: user.id,
+      userId: sessionUser.id,
       imageId: image.id,
       comment: newComment,
     }
@@ -30,29 +40,39 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
 
   return (
     <>
+      {/* This is to show comment and edit depending*/}
       {comments.map((comment, idx) => {
-        const rightUser = (comment.userId) === (user?.id)
+        let sessionEdit;
+        if (sessionUser?.id === comment?.userId) {
+          sessionEdit = (
+            <div className='commentIconHolder' onClick={openMenu}>
+              <i className="far fa-edit"></i>
+            </div>
+          )
+        } else {
+          sessionEdit = (
+            <>
+            </>
+          )
+        }
+
         return (
           <div className='iconHolder' key={idx}>
-            <p className='iconHolder' >{comment.comment}</p>
-            {rightUser && (
-              <div className='iconHolder' onClick={() => {
-                setEditCommentId(comment.id)
-              }}>
-                <i className="far fa-edit"></i>
-              </div>
-            )}
+            <p>{comment.comment}</p>
+            {sessionEdit}
+            <EditCommentForm commentId={editCommentId} hideForm={openMenu} />
           </div>
         )
       })}
-      <form onSubmit={handleCommentSubmit}>
+      {/* This is to post comment */}
+      <form className='buttonHolder' onSubmit={handleCommentSubmit}>
         <textarea type='text'
           placeholder='new comment'
           name='comment'
           value={newComment}
           onChange={e => setNewComment(e.target.value)}
         />
-        <button type='submit'>Submit comment</button>
+        <button type='submit'>Submit Comment</button>
       </form>
     </>
   )

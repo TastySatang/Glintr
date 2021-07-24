@@ -8,7 +8,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
   const comment = useSelector(state => state.comment[commentId])
   const dispatch = useDispatch();
 
-  const [text, setText] = useState(comment.comment)
+  const [text, setText] = useState(comment?.comment)
 
   const handleEditSubmit = async e => {
     e.preventDefault();

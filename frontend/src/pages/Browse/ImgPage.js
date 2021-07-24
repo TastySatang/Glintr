@@ -11,13 +11,14 @@ import './Browse.css'
 const ImgPage = () => {
   let history = useHistory();
   const { imageId } = useParams();
+
+  const image = useSelector(state => (state.image[imageId]))
+  const sessionUser = useSelector(state => (state.session.user))
+
   const [newContent, setNewContent] = useState('');
   const [editCommentId, setEditCommentId] = useState(null);
   const [showContentForm, setShowContentForm] = useState(false);
   const dispatch = useDispatch();
-
-  const image = useSelector(state => (state.image[imageId]))
-  const sessionUser = useSelector(state => (state.session.user))
 
   const openMenu = () => {
     setShowContentForm(!showContentForm);
@@ -44,18 +45,7 @@ const ImgPage = () => {
     console.log(updatedImage);
   }
 
-  let content;
-  //for editing comments itself while logged in as the commenter
-  if (editCommentId) {
-    content = (
-      <EditCommentForm image={image} commentId={editCommentId} hideForm={() => setEditCommentId(null)} />
-    )
-  } else {
-    content = (
-      <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
-    )
-  }
-
+  // for editing image itself
   const contentChangeForm = (
     <div>
       <form
@@ -83,7 +73,7 @@ const ImgPage = () => {
     </ div>
   )
 
-  // for editing image itself while logged in as the user
+  // while logged in as the user
   let sessionEdit;
   if (sessionUser?.id === image?.userId) {
     sessionEdit = (
@@ -98,6 +88,18 @@ const ImgPage = () => {
     )
   }
 
+  // let content;
+  // //for editing comments itself while logged in as the commenter
+  // if (editCommentId) {
+  //   content = (
+  //     <EditCommentForm image={image} commentId={editCommentId} hideForm={() => setEditCommentId(null)} />
+  //   )
+  // } else {
+  //   content = (
+  //     <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
+  //   )
+  // }
+
   return (
     <>
       <div className='single__content'>
@@ -110,9 +112,12 @@ const ImgPage = () => {
               {showContentForm ? contentChangeForm : (<h1 className='image__content' >{image?.content}</h1>)}
               {sessionEdit}
             </div>
-            {content}
+            <CommentsComponent image={image} editCommentId={editCommentId} setEditCommentId={setEditCommentId} />
+            {/* {content} */}
           </div>
-          <div className='rightview'></div>
+          <div className='rightview'>
+            <h2 className='single__updatedContent'>Image uploaded at: {image.createdAt}</h2>
+          </div>
         </div>
       </div>
     </>
