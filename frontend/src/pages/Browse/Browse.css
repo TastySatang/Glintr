@@ -86,9 +86,17 @@ margin-left: auto;
 
 .single__imageContent {
   margin-top: 50px;
+  margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid #cfd6d9;
   position: relative;
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.single__imageContent:hover,
+.single__imageContent:hover .contentForm{
+  background-color: #E7E9EA;
 }
 
 .rightview {
@@ -96,15 +104,25 @@ margin-left: auto;
 }
 
 .image__content {
+  color: #212124;
   width: 380px;
-  margin: 0;
 }
 
 .imageIconHolder {
+  color: #BDC0C3;
   position: absolute;
-  top: 0px;
+  top: 20px;
   right: 5px;
   width: fit-content;
   font-size: 32px;
   cursor: pointer;
+}
+
+.imageIconHolder:hover {
+  color: #686c6e;
+}
+
+.contentForm {
+  background-color:#F3F5F6;
+  padding: 5px;
 }

@@ -21,12 +21,13 @@ const ImgPage = () => {
 
   const openMenu = () => {
     setShowContentForm(!showContentForm);
+    setNewContent(image?.content)
   }
+
 
   useEffect(() => {
     dispatch(getImage(imageId))
     setEditCommentId(null)
-    setShowContentForm(false)
   }, [dispatch, imageId])
 
   const handleEditSubmit = async (e) => {
@@ -57,7 +58,9 @@ const ImgPage = () => {
 
   const contentChangeForm = (
     <div>
-      <form onSubmit={handleEditSubmit}>
+      <form
+        className='contentForm'
+        onSubmit={handleEditSubmit}>
         <input
           type='text'
           placeholder='change content'
@@ -65,6 +68,7 @@ const ImgPage = () => {
           onChange={e => setNewContent(e.target.value)}
         />
         <button type='submit'>Update</button>
+        <button type='button' onClick={openMenu}>cancel</button>
       </form>
       <button
         className='delete'
@@ -99,10 +103,9 @@ const ImgPage = () => {
         <div className='single__postcontainer'>
           <div className='leftview'>
             <div className='single__imageContent'>
-              <h1 className='image__content' >{image?.content}</h1>
+              {showContentForm ? contentChangeForm : (<h1 className='image__content' >{image?.content}</h1>)}
               {sessionEdit}
             </div>
-            {showContentForm && contentChangeForm}
             {content}
           </div>
           <div className='rightview'></div>
