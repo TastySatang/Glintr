@@ -12,11 +12,6 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
     dispatch(getComments(image?.id));
   }, [dispatch, image?.id])
 
-  const handleButtonClick = () => {
-    console.log('image', image)
-    console.log(comments)
-  }
-
   const handleCommentSubmit = async e => {
     e.preventDefault();
 
@@ -25,6 +20,8 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
       imageId: image.id,
       comment: newComment,
     }
+
+    setNewComment('');
 
     await dispatch(createComment(data, image.id))
   }
@@ -46,13 +43,14 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
         )
       })}
       <form onSubmit={handleCommentSubmit}>
-        <input type='text'
+        <textarea type='text'
           placeholder='new comment'
+          name='comment'
+          value={newComment}
           onChange={e => setNewComment(e.target.value)}
         />
-        <button type='submit'>SUbmit comment</button>
+        <button type='submit'>Submit comment</button>
       </form>
-      <button onClick={handleButtonClick}>CommentsButton</button>
     </>
   )
 }

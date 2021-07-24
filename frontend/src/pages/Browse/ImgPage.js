@@ -21,7 +21,6 @@ const ImgPage = () => {
   useEffect(() => {
     dispatch(getImage(imageId))
     setEditCommentId(null)
-    console.log('useEffect ran')
   }, [dispatch, imageId])
 
   const handleEditSubmit = async (e) => {
@@ -32,8 +31,9 @@ const ImgPage = () => {
       content: newContent
     }
 
+    setNewContent('');
     const updatedImage = await dispatch(editContent(payload));
-    console.log('after await dispatch', updatedImage);
+    console.log(updatedImage);
   }
 
   let content;
@@ -57,6 +57,7 @@ const ImgPage = () => {
           <input
             type='text'
             placeholder='change content'
+            value={newContent}
             onChange={e => setNewContent(e.target.value)}
           />
           <button>Edit</button>

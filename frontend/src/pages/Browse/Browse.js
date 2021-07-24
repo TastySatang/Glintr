@@ -31,7 +31,6 @@ const Browse = () => {
                   <img className='image' alt={idx} key={idx} src={image.imageUrl} />
                 </Link>
               </div>
-
             );
           })}
         </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { createImage } from '../../store/images'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +10,10 @@ const PostImage = () => {
   const [errors, setErrors] = useState([]);
 
   let history = useHistory();
+
+  useEffect(() => {
+    setAlbumId(0)
+  }, [])
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user)

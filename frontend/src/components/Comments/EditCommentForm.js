@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { updateComment, deleteComment } from "../../store/comments";
 
+import './Comments.css'
+
 const EditCommentForm = ({ commentId, hideForm }) => {
   const comment = useSelector(state => state.comment[commentId])
   const dispatch = useDispatch();
@@ -15,8 +17,6 @@ const EditCommentForm = ({ commentId, hideForm }) => {
       id: commentId,
       comment: text
     };
-    console.log('insidehandlesubmit', payload)
-
     const updatedComment = await dispatch(updateComment(payload))
 
     if (updatedComment) {
@@ -29,8 +29,6 @@ const EditCommentForm = ({ commentId, hideForm }) => {
     console.log(typeof commentId)
     hideForm();
   };
-
-
 
   return (
     <div>
