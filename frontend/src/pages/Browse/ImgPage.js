@@ -13,14 +13,20 @@ const ImgPage = () => {
   const { imageId } = useParams();
   const [newContent, setNewContent] = useState('');
   const [editCommentId, setEditCommentId] = useState(null);
+  const [showContentForm, setShowContentForm] = useState(false);
   const dispatch = useDispatch();
 
   const image = useSelector(state => (state.image[imageId]))
   const sessionUser = useSelector(state => (state.session.user))
 
+  const openMenu = () => {
+    setShowContentForm(!showContentForm);
+  }
+
   useEffect(() => {
     dispatch(getImage(imageId))
     setEditCommentId(null)
+    setShowContentForm(false)
   }, [dispatch, imageId])
 
   const handleEditSubmit = async (e) => {
@@ -32,6 +38,7 @@ const ImgPage = () => {
     }
 
     setNewContent('');
+    setShowContentForm(false);
     const updatedImage = await dispatch(editContent(payload));
     console.log(updatedImage);
   }
@@ -48,27 +55,33 @@ const ImgPage = () => {
     )
   }
 
+  const contentChangeForm = (
+    <div>
+      <form onSubmit={handleEditSubmit}>
+        <input
+          type='text'
+          placeholder='change content'
+          value={newContent}
+          onChange={e => setNewContent(e.target.value)}
+        />
+        <button type='submit'>Update</button>
+      </form>
+      <button
+        className='delete'
+        onClick={() => {
+          dispatch(deleteImage(imageId))
+          history.push('/photos')
+        }}>Delete image</button>
+    </ div>
+  )
+
   // for editing image itself while logged in as the user
   let sessionEdit;
   if (sessionUser?.id === image?.userId) {
     sessionEdit = (
-      <>
-        <form onSubmit={handleEditSubmit}>
-          <input
-            type='text'
-            placeholder='change content'
-            value={newContent}
-            onChange={e => setNewContent(e.target.value)}
-          />
-          <button>Edit</button>
-        </form>
-        <button
-          className='delete'
-          onClick={() => {
-            dispatch(deleteImage(imageId))
-            history.push('/photos')
-          }}>Delete image</button>
-      </>
+      <div className='imageIconHolder' onClick={openMenu}>
+        <i class="far fa-edit"></i>
+      </div>
     )
   } else {
     sessionEdit = (
@@ -76,13 +89,6 @@ const ImgPage = () => {
       </>
     )
   }
-
-  // const handleButtonClick = () => {
-  //   console.log('image', image)
-  //   console.log('user', sessionUser)
-  //   console.log('bool')
-  // }
-
 
   return (
     <>
@@ -92,15 +98,15 @@ const ImgPage = () => {
         </div>
         <div className='single__postcontainer'>
           <div className='leftview'>
-            <h2 className='single__imageContent'>
-              {image?.content}
+            <div className='single__imageContent'>
+              <h1 className='image__content' >{image?.content}</h1>
               {sessionEdit}
-            </h2>
+            </div>
+            {showContentForm && contentChangeForm}
             {content}
           </div>
           <div className='rightview'></div>
         </div>
-        {/* <button onClick={handleButtonClick}>BUTTON HERE</button> */}
       </div>
     </>
   )

@@ -1,0 +1,7 @@
+.iconHolder:hover~.fa-edit {
+  background-color: #C0C2C3;
+  display: block;
+}
+
+/* .fa-edit {
+} */

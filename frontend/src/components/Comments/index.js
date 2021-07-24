@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createComment, getComments, } from '../../store/comments';
 
+import './Comments.css'
+
 const CommentsComponent = ({ image, setEditCommentId }) => {
   const comments = useSelector((state) => Object.values(state.comment).filter(comment => comment.imageId === image.id));
   const user = useSelector((state => state.session.user))
@@ -31,13 +33,14 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
       {comments.map((comment, idx) => {
         const rightUser = (comment.userId) === (user?.id)
         return (
-          <div key={idx}>
-            <p>{comment.comment}</p>
+          <div className='iconHolder' key={idx}>
+            <p className='iconHolder' >{comment.comment}</p>
             {rightUser && (
-              <button onClick={() => {
+              <div className='iconHolder' onClick={() => {
                 setEditCommentId(comment.id)
-                console.log(comment.id)
-              }}>Edit</button>
+              }}>
+                <i className="far fa-edit"></i>
+              </div>
             )}
           </div>
         )

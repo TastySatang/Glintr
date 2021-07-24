@@ -7,7 +7,7 @@ const PostImage = () => {
   const [albumId, setAlbumId] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
   const [content, setContent] = useState('');
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   let history = useHistory();
 
