@@ -62,6 +62,7 @@ const ImgPage = () => {
         className='contentForm'
         onSubmit={handleEditSubmit}>
         <input
+          className='editField'
           type='text'
           placeholder='change content'
           value={newContent}

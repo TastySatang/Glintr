@@ -104,6 +104,7 @@ margin-left: auto;
 }
 
 .image__content {
+  font-size: 16px;
   color: #212124;
   width: 380px;
 }
@@ -111,7 +112,7 @@ margin-left: auto;
 .imageIconHolder {
   color: #BDC0C3;
   position: absolute;
-  top: 20px;
+  top: 5px;
   right: 5px;
   width: fit-content;
   font-size: 32px;
@@ -125,4 +126,19 @@ margin-left: auto;
 .contentForm {
   background-color:#F3F5F6;
   padding: 5px;
+}
+
+.editField {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border: 1px solid #9EA4A7;
+  resize: none;
+}
+
+.editField:focus {
+  outline: none;
+  border: 1px solid #008DDF;
 }
