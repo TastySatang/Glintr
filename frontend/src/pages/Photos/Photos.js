@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom'
 import { createImage } from '../../store/images'
 import { useDispatch, useSelector } from 'react-redux'
 
+import './Photos.css'
+
 const PostImage = () => {
   const [albumId, setAlbumId] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
@@ -35,17 +37,18 @@ const PostImage = () => {
 
   return (
     <>
-      <div>
-        <h1>Post</h1>
+      <div className='uploadContainer'>
+        <label></label>
         <form style={{ display: "flex", flexFlow: "column" }}
           onSubmit={handleSubmit}>
-          <label>content
-            <input
-              type="text" placeholder='content'
-              onChange={e => setContent(e.target.value)}
-            />
-          </label>
-          <label>files
+
+          <input
+            className='photoField'
+            type="text" placeholder='content'
+            onChange={e => setContent(e.target.value)}
+          />
+
+          <label>Upload an Image
             <input
               type='file' onChange={updateFile}
             />
