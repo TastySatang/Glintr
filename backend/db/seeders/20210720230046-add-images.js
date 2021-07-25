@@ -12,7 +12,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 3,
         albumId: 0,
         imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/cold.jpg`,
         content: 'On the cold, foggy morning of 3rd December 1967 a BR 9F 2-10-0 heavy goods engine awaits its next turn of duty in the shed yard at Carlisle Kingmoor MPD. Four weeks later steam traction over Shap ceased and the steam shed at Kingmoor closed.',
@@ -28,7 +28,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 2,
         albumId: 0,
         imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/harvest.jpg`,
         content: 'Harvest',
@@ -36,7 +36,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 2,
         albumId: 0,
         imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/LEO.jpg`,
         content: 'LEO',
@@ -52,7 +52,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 2,
         albumId: 0,
         imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/northernPygmy.jpg`,
         content: 'Northern Pygmy Owl with Prey',
@@ -92,7 +92,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 2,
         albumId: 0,
         imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/shoebill.jpg`,
         content: 'Shoe-billed Stork',
@@ -100,7 +100,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 2,
         albumId: 0,
         imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/THE+ROCK.jpg`,
         content: 'THE ROCK - Switzerland',
@@ -108,7 +108,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        userId: 1,
+        userId: 2,
         albumId: 0,
         imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/wasp.jpg`,
         content: 'Wasp on Rattlesnake Master',

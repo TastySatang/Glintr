@@ -55,7 +55,7 @@
   background-color: #FFF;
   margin: 10px;
   resize: none;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .editCommentField:focus {
