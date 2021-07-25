@@ -30,6 +30,9 @@ const Browse = () => {
                 <Link to={`/photos/${image.id}`} >
                   <img className='image' alt={idx} key={idx} src={image.imageUrl} />
                 </Link>
+                <div className='hovertext'>
+                  {image.content}
+                </div>
               </div>
             );
           })}
