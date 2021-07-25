@@ -5,20 +5,22 @@ import { createComment, getComments, } from '../../store/comments';
 import './Comments.css'
 
 const CommentsComponent = ({ image, setEditCommentId }) => {
-  const comments = useSelector((state) => Object.values(state.comment).filter(comment => comment.imageId === image.id));
-  const user = useSelector((state => state.session.user))
+  const comments = useSelector((state) => Object.values(state.comment).filter(comment => comment.imageId === image?.id));
+  const sessionUser = useSelector((state => state.session.user))
+
   const [newComment, setNewComment] = useState('')
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getComments(image?.id));
+
   }, [dispatch, image?.id])
 
   const handleCommentSubmit = async e => {
     e.preventDefault();
 
     let data = {
-      userId: user.id,
+      userId: sessionUser.id,
       imageId: image.id,
       comment: newComment,
     }
@@ -29,9 +31,21 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
 
   return (
     <>
+      {/* This is to show comment and edit depending*/}
       {comments.map((comment, idx) => {
-        const rightUser = (comment.userId) === (user?.id)
+        let sessionEdit;
+        if (sessionUser?.id === comment?.userId) {
+          sessionEdit = (
+            <div className='commentIconHolder'>
+              <i className="far fa-edit" onClick={setEditCommentId(comment.id)}></i>
+            </div>
+          )
+        } else {
+          sessionEdit = null
+        }
+
         return (
+
           <div className='commentContainer' key={idx}>
             <div className='comment-dots'>
               <i class="far fa-comment-dots"></i>
@@ -51,6 +65,7 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
       })}
 
       <form className='newCommentForm' onSubmit={handleCommentSubmit}>
+
         <textarea type='text'
           className='editCommentField'
           placeholder='Add a comment'
@@ -58,7 +73,9 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
           value={newComment}
           onChange={e => setNewComment(e.target.value)}
         />
+
         <button className='commentButton' type='submit'>Comment</button>
+
       </form>
     </>
   )

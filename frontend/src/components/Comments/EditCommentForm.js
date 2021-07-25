@@ -17,6 +17,8 @@ const EditCommentForm = ({ commentId, hideForm }) => {
       id: commentId,
       comment: text
     };
+    console.log('insidehandlesubmit', payload)
+
     const updatedComment = await dispatch(updateComment(payload))
 
     if (updatedComment) {
@@ -28,6 +30,8 @@ const EditCommentForm = ({ commentId, hideForm }) => {
     e.preventDefault();
     hideForm();
   };
+
+
 
   return (
     <div className='editFormContainer' >
