@@ -41,8 +41,8 @@ const EditCommentForm = ({ commentId, hideForm }) => {
           onChange={e => setText(e.target.value)}
         />
         <div className='buttonHolder' >
-          <button type="submit">update</button>
-          <button type="button" onClick={handleCancelClick}>cancel</button>
+          <button type="submit">Update</button>
+          <button type="button" onClick={handleCancelClick}>Cancel</button>
           <button id='delete' type='button' onClick={() => {
             dispatch(deleteComment(commentId))
             hideForm()

@@ -24,7 +24,6 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
     }
 
     setNewComment('');
-
     await dispatch(createComment(data, image.id))
   }
 
@@ -50,14 +49,16 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
           </div>
         )
       })}
-      <form onSubmit={handleCommentSubmit}>
+
+      <form className='newCommentForm' onSubmit={handleCommentSubmit}>
         <textarea type='text'
-          placeholder='new comment'
+          className='editCommentField'
+          placeholder='Add a comment'
           name='comment'
           value={newComment}
           onChange={e => setNewComment(e.target.value)}
         />
-        <button type='submit'>Submit comment</button>
+        <button className='commentButton' type='submit'>Comment</button>
       </form>
     </>
   )
