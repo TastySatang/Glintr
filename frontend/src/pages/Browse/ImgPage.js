@@ -11,17 +11,15 @@ import './Browse.css'
 const ImgPage = () => {
   let history = useHistory();
   const { imageId } = useParams();
-
-  const image = useSelector(state => (state.image[imageId]))
-  const sessionUser = useSelector(state => (state.session.user))
-
   const [newContent, setNewContent] = useState('');
   const [editCommentId, setEditCommentId] = useState(null);
   const [showContentForm, setShowContentForm] = useState(false);
   const dispatch = useDispatch();
 
-  const hideForm = () => {
-    setEditCommentId(null);
+  const image = useSelector(state => (state.image[imageId]))
+  const sessionUser = useSelector(state => (state.session.user))
+
+  const openMenu = () => {
     setShowContentForm(!showContentForm);
     setNewContent(image?.content)
   }
@@ -46,7 +44,6 @@ const ImgPage = () => {
     console.log(updatedImage);
   }
 
-
   let content;
   //for editing comments itself while logged in as the commenter
   if (editCommentId) {
@@ -58,7 +55,6 @@ const ImgPage = () => {
       null
     )
   }
-
 
   const contentChangeForm = (
     <div>
@@ -79,14 +75,14 @@ const ImgPage = () => {
               dispatch(deleteImage(imageId))
               history.push('/photos')
             }}>Delete Image!</button>
-          <button type='button'>Cancel</button>
+          <button type='button' onClick={openMenu}>Cancel</button>
           <button type='submit'>Done</button>
         </div>
       </form>
     </ div>
   )
 
-  // while logged in as the user
+  // for editing image itself while logged in as the user
   let sessionEdit;
   if (sessionUser?.id === image?.userId) {
     sessionEdit = (
@@ -100,18 +96,6 @@ const ImgPage = () => {
       </>
     )
   }
-
-  // let content;
-  // //for editing comments itself while logged in as the commenter
-  // if (editCommentId) {
-  //   content = (
-  //     <EditCommentForm image={image} commentId={editCommentId} hideForm={() => setEditCommentId(null)} />
-  //   )
-  // } else {
-  //   content = (
-  //     <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
-  //   )
-  // }
 
   return (
     <>
@@ -129,7 +113,6 @@ const ImgPage = () => {
           </div>
           <div className='rightview'>
             {content}
-
           </div>
         </div>
       </div>
