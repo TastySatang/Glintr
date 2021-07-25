@@ -10,13 +10,14 @@ const CommentsComponent = ({ image, editCommentId, setEditCommentId }) => {
   const sessionUser = useSelector((state => state.session.user))
 
   const [newComment, setNewComment] = useState('')
-  const [showCommentForm, setShowCommentForm] = useState(false)
+  const [isActive, setActive] = useState(false);
+  // const [showCommentForm, setShowCommentForm] = useState(false)
   const dispatch = useDispatch();
 
-  const openMenu = () => {
-    setShowCommentForm(!showCommentForm);
-    console.log(showCommentForm)
-  }
+  // const openMenu = () => {
+  //   setShowCommentForm(!showCommentForm);
+  //   console.log(showCommentForm)
+  // }
 
   useEffect(() => {
     dispatch(getComments(image?.id));
@@ -45,7 +46,7 @@ const CommentsComponent = ({ image, editCommentId, setEditCommentId }) => {
         let sessionEdit;
         if (sessionUser?.id === comment?.userId) {
           sessionEdit = (
-            <div className='commentIconHolder' onClick={openMenu}>
+            <div className='commentIconHolder'>
               <i className="far fa-edit"></i>
             </div>
           )
@@ -57,10 +58,10 @@ const CommentsComponent = ({ image, editCommentId, setEditCommentId }) => {
         }
 
         return (
-          <div className='iconHolder' key={idx}>
+          <div className='comment' key={idx}>
             <p>{comment.comment}</p>
             {sessionEdit}
-            <EditCommentForm commentId={editCommentId} hideForm={openMenu} />
+            <EditCommentForm commentId={editCommentId} isActive={isActive} setActive={setActive} />
           </div>
         )
       })}
