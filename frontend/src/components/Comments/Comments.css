@@ -1,7 +1,31 @@
-.iconHolder:hover~.fa-edit {
-  background-color: #C0C2C3;
-  display: block;
+.commentContainer{
+  margin: 10px 4px;
+  padding: 10px;
+  border-radius: 2px;
+  position:relative;
+  box-shadow: 1px 1px 4px 0 rgb(128, 128, 128);
 }
 
-/* .fa-edit {
-} */
+.commentContainer > p {
+  width: 80%;
+}
+
+.iconHolder {
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  color: #444748;
+}
+
+.iconHolder:hover {
+  cursor: pointer;
+  color: #8E9396;
+}
+
+.commentContainer:hover {
+    background-color: #FBFDFF;
+}
+
+.comment {
+  margin: 0;
+}

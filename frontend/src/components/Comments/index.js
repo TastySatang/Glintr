@@ -33,12 +33,14 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
       {comments.map((comment, idx) => {
         const rightUser = (comment.userId) === (user?.id)
         return (
-          <div className='iconHolder' key={idx}>
-            <p className='iconHolder' >{comment.comment}</p>
+          <div className='commentContainer' key={idx}>
+            <p className='comment'>{comment.comment}</p>
             {rightUser && (
-              <div className='iconHolder' onClick={() => {
-                setEditCommentId(comment.id)
-              }}>
+              <div
+                className='iconHolder'
+                onClick={() => {
+                  setEditCommentId(comment.id)
+                }}>
                 <i className="far fa-edit"></i>
               </div>
             )}

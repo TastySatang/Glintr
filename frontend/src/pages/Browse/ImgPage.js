@@ -52,7 +52,7 @@ const ImgPage = () => {
     )
   } else {
     content = (
-      <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
+      null
     )
   }
 
@@ -64,7 +64,6 @@ const ImgPage = () => {
         <input
           className='editField'
           type='text'
-          placeholder='change content'
           value={newContent}
           onChange={e => setNewContent(e.target.value)}
         />
@@ -110,9 +109,11 @@ const ImgPage = () => {
               {showContentForm ? contentChangeForm : (<h1 className='image__content' >{image?.content}</h1>)}
               {sessionEdit}
             </div>
+            <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
+          </div>
+          <div className='rightview'>
             {content}
           </div>
-          <div className='rightview'></div>
         </div>
       </div>
     </>

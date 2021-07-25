@@ -36,6 +36,7 @@ const EditCommentForm = ({ commentId, hideForm }) => {
         <input
           type='text'
           placeholder='Edit text'
+          value={text}
           onChange={e => setText(e.target.value)}
         />
         <button type="submit">update</button>
