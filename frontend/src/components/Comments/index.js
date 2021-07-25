@@ -26,7 +26,6 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
     }
 
     setNewComment('');
-
     await dispatch(createComment(data, image.id))
   }
 
@@ -46,21 +45,37 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
         }
 
         return (
-          <div className='comment' key={idx}>
-            <p class>{comment.comment}</p>
-            {sessionEdit}
+
+          <div className='commentContainer' key={idx}>
+            <div className='comment-dots'>
+              <i class="far fa-comment-dots"></i>
+            </div>
+            <p className='comment'>{comment.comment}</p>
+            {rightUser && (
+              <div
+                className='iconHolder'
+                onClick={() => {
+                  setEditCommentId(comment.id)
+                }}>
+                <i className="far fa-edit"></i>
+              </div>
+            )}
           </div>
         )
       })}
-      {/* This is to post comment */}
-      <form className='buttonHolder' onSubmit={handleCommentSubmit}>
+
+      <form className='newCommentForm' onSubmit={handleCommentSubmit}>
+
         <textarea type='text'
-          placeholder='new comment'
+          className='editCommentField'
+          placeholder='Add a comment'
           name='comment'
           value={newComment}
           onChange={e => setNewComment(e.target.value)}
         />
-        <button type='submit'>Submit Comment</button>
+
+        <button className='commentButton' type='submit'>Comment</button>
+
       </form>
     </>
   )

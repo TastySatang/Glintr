@@ -1,3 +1,98 @@
-.hidden {
-  display: none;
+.commentContainer{
+  margin: 10px 4px;
+  padding: 10px;
+  border-radius: 2px;
+  position:relative;
+  box-shadow: 1px 1px 4px 0 rgb(128, 128, 128);
+}
+
+.commentContainer > p {
+  width: 80%;
+}
+
+.iconHolder {
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  color: #444748;
+}
+
+.iconHolder:hover {
+  cursor: pointer;
+  color: #8E9396;
+}
+
+.commentContainer:hover {
+    background-color: #FBFDFF;
+}
+
+.comment {
+  position: relative;
+  margin: 0;
+}
+
+.editFormContainer {
+  position: absolute;
+  top: 115px;
+  background-color:#F3F5F6;
+}
+
+.editFormContainer > label {
+  font-size: 20px;
+  position: relative;
+}
+
+#editForm {
+  background-color:#F3F5F6;
+}
+
+.editCommentField {
+  font-size: 13px;
+  font-family: darkmode-off, sans-serif;
+  font-weight: 100;
+  height: 100px;
+  width: 100%;
+  background-color: #FFF;
+  margin: 10px;
+  resize: none;
+  overflow: hidden;
+}
+
+.editCommentField:focus {
+  outline: none;
+  border: 1px solid #008DDF;
+}
+
+.newCommentForm {
+    width: 100%;
+    height: 155px;
+    font-size: 13px;
+    font-family: darkmode-off, sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    margin-bottom: 200px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    resize: none;
+    border-radius: 3px;
+    position: relative;
+}
+
+.commentButton {
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+  font: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 32px;
+  width: 100px;
+  background-color: #128fdc;
+  text-decoration: none;
+  transition: .15s;
+  border-radius: 3px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0px 5px;
 }

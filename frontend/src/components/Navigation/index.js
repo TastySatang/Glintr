@@ -35,12 +35,12 @@ function Navigation({ isLoaded }) {
         </div>
         <div className='links'>
           <NavLink className='navbar__browse' exact to='/photos'>
-            <h2>Browse</h2>
+            <h2>browse</h2>
           </NavLink>
         </div>
         <div className='links'>
           <NavLink className='navbar__browse' exact to='/photos/new'>
-            <h2>Upload</h2>
+            <h2>upload</h2>
           </NavLink>
         </div>
         <ul className='navbar__tools'>

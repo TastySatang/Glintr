@@ -1,5 +1,7 @@
 .content {
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+font-family: darkmode-off, sans-serif;
+font-style: normal;
+font-weight: 100;
   font-weight: 100;
   font-size: 13px;
   background-color: #f3f5f6;
@@ -12,6 +14,7 @@
   top: 48px;
   padding: 50px 140px;
   display: block;
+  margin-bottom: 100vh;
 }
 
 .photos__container {
@@ -42,7 +45,6 @@
 }
 
 .single__content{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
   font-weight: 100;
   font-size: 13px;
   width: 100%;
@@ -131,12 +133,13 @@ margin-left: auto;
 
 .editField {
   width: 100%;
+  font-size: 13px;
+  font-family: darkmode-off, sans-serif;
+  font-weight: 100;
   font-size: 16px;
-  font-weight: 600;
   margin-bottom: 10px;
   padding-left: 10px;
   box-sizing: border-box;
-  border: 1px solid #9EA4A7;
   resize: none;
   border-radius: 3px;
 }
@@ -174,11 +177,8 @@ margin-left: auto;
   background-color: #ff5c66;
 }
 
-.single__updatedContent {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  position: relative;
-  border-radius: 2px;
-  padding: 5px;
-}
+.hovertext {
+  color: white;
+  z-index: 3000;
+  font-size: 100px;
+

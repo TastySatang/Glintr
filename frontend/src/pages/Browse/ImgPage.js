@@ -46,7 +46,20 @@ const ImgPage = () => {
     console.log(updatedImage);
   }
 
-  // for editing image itself
+
+  let content;
+  //for editing comments itself while logged in as the commenter
+  if (editCommentId) {
+    content = (
+      <EditCommentForm image={image} commentId={editCommentId} hideForm={() => setEditCommentId(null)} />
+    )
+  } else {
+    content = (
+      null
+    )
+  }
+
+
   const contentChangeForm = (
     <div>
       <form
@@ -55,7 +68,6 @@ const ImgPage = () => {
         <input
           className='editField'
           type='text'
-          placeholder='change content'
           value={newContent}
           onChange={e => setNewContent(e.target.value)}
         />
@@ -113,12 +125,11 @@ const ImgPage = () => {
               {showContentForm ? contentChangeForm : (<h1 className='image__content' >{image?.content}</h1>)}
               {sessionEdit}
             </div>
-            <CommentsComponent image={image} editCommentId={editCommentId} setEditCommentId={setEditCommentId} />
-            {/* {content} */}
+            <CommentsComponent image={image} setEditCommentId={setEditCommentId} />
           </div>
           <div className='rightview'>
-            {editCommentId && (<EditCommentForm image={image} commentId={editCommentId} hideForm={() => setEditCommentId(null)} />)}
-            <h2 className='single__updatedContent'>Image uploaded at: {image?.createdAt}</h2>
+            {content}
+
           </div>
         </div>
       </div>
