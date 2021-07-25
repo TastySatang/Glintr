@@ -78,8 +78,8 @@ const ImgPage = () => {
   let sessionEdit;
   if (sessionUser?.id === image?.userId) {
     sessionEdit = (
-      <div className='imageIconHolder'>
-        <i class="far fa-edit"></i>
+      <div className='imageIconHolder' onClick={openMenu}>
+        <i className="far fa-edit"></i>
       </div>
     )
   } else {
