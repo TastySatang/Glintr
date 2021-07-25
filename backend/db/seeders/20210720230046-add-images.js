@@ -4,57 +4,89 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Images', [
       {
-        userId: 1,
-        albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51104874845_d04f6445ba_o.jpg',
-        content: 'Lundy Canyon Lundy Falls Autumn Colors High Sierra Fall Foliage Eastern Sierra Lundy Trail Hike Fine Art Landscape Nature Photography! Dr. Elliot McGucken Sierra Aspens & Snow!',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        userId: 1,
-        albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51296543472_90fe947020_o.jpg',
-        content: 'Mount Whitney Full Moon Moonrise Alabama Hills Whitney Portal Sierra Crest California Fuji GFX100 McGucken Fine Art Landscape Photography! Fujifilm FUJINON GF 250mm F/4 R LM OIS WR Lens GFX 100 & FUJIFILM GF 1.4X TC WR Teleconverter 350mm',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        userId: 1,
-        albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51297446558_bd023aaa58_o.jpg',
-        content: 'Los Angeles Full Moon Moonrise Skyline Cityscape',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        userId: 1,
-        albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51300048829_151339ea51_o.jpg',
-        content: 'Wolves Play Fighting West Yellowstone! Montana',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
         userId: 2,
         albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51329183003_c82297ba6c_o.jpg',
-        content: 'Petit Blongios',
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/C'estunarc.jpg`,
+        content: 'C\'est un arc',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 1,
         albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51331569947_dd22894197_o.jpg',
-        content: 'Lady in the Wind Lower Antelope Canyon',
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/cold.jpg`,
+        content: 'On the cold, foggy morning of 3rd December 1967 a BR 9F 2-10-0 heavy goods engine awaits its next turn of duty in the shed yard at Carlisle Kingmoor MPD. Four weeks later steam traction over Shap ceased and the steam shed at Kingmoor closed.',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        userId: 2,
+        userId: 1,
         albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51331684058_4365c44f75_o.jpg',
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/explore+the+fjords.jpg`,
+        content: 'Explore the fjords...',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/harvest.jpg`,
+        content: 'Harvest',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/LEO.jpg`,
+        content: 'LEO',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/monument.jpg`,
+        content: 'Monument Valley Mittens Buttes',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/northernPygmy.jpg`,
+        content: 'Northern Pygmy Owl with Prey',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/One+Tree.jpg`,
+        content: 'One Tree',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/Rainy.jpg`,
+        content: 'Rainy',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/seletion.jpg`,
+        content: 'Selection',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        userId: 1,
+        albumId: 0,
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/seventh.jpg`,
         content: 'Seventh Heaven Fuchsias in full bloom',
         createdAt: new Date(),
         updatedAt: new Date()
@@ -62,48 +94,24 @@ module.exports = {
       {
         userId: 1,
         albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51332224681_7ffdf14e13_o.jpg',
-        content: 'Slot Canyon Antelope Canyon',
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/shoebill.jpg`,
+        content: 'Shoe-billed Stork',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 1,
         albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51332291101_88fa38df33_o.jpg',
-        content: 'Lady in the Wind Lower Antelope Canyon',
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/THE+ROCK.jpg`,
+        content: 'THE ROCK - Switzerland',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         userId: 1,
         albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51333325885_1f88c99619_o.jpg',
-        content: 'Lady in the Wind Lower Antelope Canyon',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        userId: 1,
-        albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/example.png',
-        content: 'Example Homepage Image',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        userId: 1,
-        albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51321252965_c6ccbe97c6_o.jpg',
-        content: 'A Turtle',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        userId: 1,
-        albumId: 0,
-        imageUrl: 'https://glintrbucket.s3.us-west-1.amazonaws.com/51321141270_5f4f5a7f43_o.jpg',
-        content: "Is this the grand canyon?",
+        imageUrl: `https://glintrbucket.s3.us-west-1.amazonaws.com/wasp.jpg`,
+        content: 'Wasp on Rattlesnake Master',
         createdAt: new Date(),
         updatedAt: new Date()
       },
