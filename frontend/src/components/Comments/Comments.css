@@ -27,5 +27,32 @@
 }
 
 .comment {
+  position: relative;
   margin: 0;
+}
+
+.editFormContainer {
+  position: absolute;
+  top: 115px;
+  background-color:#F3F5F6;
+}
+
+.editFormContainer > label {
+  font-size: 20px;
+  position: relative;
+}
+
+#editForm {
+  background-color:#F3F5F6;
+}
+
+.editField {
+  font-size: 13px;
+  font-weight: 0px;
+  font-family: sans-serif;
+  height: 100px;
+  background-color: #FFF;
+  margin-top: 5px;
+  resize: none;
+  overflow: hidden;
 }

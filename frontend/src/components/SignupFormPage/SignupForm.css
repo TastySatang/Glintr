@@ -30,7 +30,7 @@ body,html {
 }
 
 form {
-  background-color: #fff;
+  background-color: #F3F5F6;
   display:flex;
   font-family: 'Proxima Nova','helvetica neue',helvetica,arial,sans-serif;
   flex-direction: column;

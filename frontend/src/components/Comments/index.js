@@ -34,6 +34,9 @@ const CommentsComponent = ({ image, setEditCommentId }) => {
         const rightUser = (comment.userId) === (user?.id)
         return (
           <div className='commentContainer' key={idx}>
+            <div className='comment-dots'>
+              <i class="far fa-comment-dots"></i>
+            </div>
             <p className='comment'>{comment.comment}</p>
             {rightUser && (
               <div

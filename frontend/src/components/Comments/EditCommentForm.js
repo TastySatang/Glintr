@@ -31,20 +31,24 @@ const EditCommentForm = ({ commentId, hideForm }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleEditSubmit}>
-        <input
+    <div className='editFormContainer' >
+      <label>Edit Comment</label>
+      <form id='editForm' onSubmit={handleEditSubmit}>
+        <textarea
+          className='editField'
           type='text'
           placeholder='Edit text'
           value={text}
           onChange={e => setText(e.target.value)}
         />
-        <button type="submit">update</button>
-        <button type="button" onClick={handleCancelClick}>cancel</button>
-        <button type='button' onClick={() => {
-          dispatch(deleteComment(commentId))
-          hideForm();
-        }}>Delete</button>
+        <div className='buttonHolder' >
+          <button type="submit">update</button>
+          <button type="button" onClick={handleCancelClick}>cancel</button>
+          <button id='delete' type='button' onClick={() => {
+            dispatch(deleteComment(commentId))
+            hideForm()
+          }}>Delete</button>
+        </div>
       </form>
     </div>
   )
