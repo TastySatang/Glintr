@@ -3,6 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { createImage } from '../../store/images'
 import { useDispatch, useSelector } from 'react-redux'
 
+import './Photos.css'
+import { set } from 'js-cookie'
+
 const PostImage = () => {
   const [albumId, setAlbumId] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
@@ -22,7 +25,9 @@ const PostImage = () => {
     e.preventDefault();
 
     const created = await dispatch(createImage({ userId: user.id, albumId, imageUrl, content }))
-    console.log(created);
+    setImageUrl(null)
+    setContent('')
+
     if (created) {
       history.push(`/photos`)
     }
@@ -35,23 +40,25 @@ const PostImage = () => {
 
   return (
     <>
-      <div>
-        <h1>Post</h1>
-        <form style={{ display: "flex", flexFlow: "column" }}
-          onSubmit={handleSubmit}>
-          <label>content
-            <textarea
-              type="text" placeholder='content'
+      <div className='uploadContainer'>
+        <label className='uploadLabel' >Upload an Image
+          <form style={{ display: "flex", flexFlow: "column" }}
+            onSubmit={handleSubmit}>
+
+            <input
+              className='photoField'
+              type="text" placeholder='Give it a snappy title'
               onChange={e => setContent(e.target.value)}
             />
-          </label>
-          <label>files
-            <input
-              type='file' onChange={updateFile}
-            />
-          </label>
-          <button type="submit">Post photo</button>
-        </form>
+
+            <label className='fileselect'>
+              <input
+                type='file' onChange={updateFile}
+              />
+            </label>
+            <button className='uploadButton' type="submit">Post photo</button>
+          </form>
+        </label>
       </div>
     </>
   )
