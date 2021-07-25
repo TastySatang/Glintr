@@ -20,7 +20,8 @@ const ImgPage = () => {
   const [showContentForm, setShowContentForm] = useState(false);
   const dispatch = useDispatch();
 
-  const openMenu = () => {
+  const hideForm = () => {
+    setEditCommentId(null);
     setShowContentForm(!showContentForm);
     setNewContent(image?.content)
   }
@@ -66,7 +67,7 @@ const ImgPage = () => {
               dispatch(deleteImage(imageId))
               history.push('/photos')
             }}>Delete Image!</button>
-          <button type='button' onClick={openMenu}>Cancel</button>
+          <button type='button'>Cancel</button>
           <button type='submit'>Done</button>
         </div>
       </form>
@@ -77,7 +78,7 @@ const ImgPage = () => {
   let sessionEdit;
   if (sessionUser?.id === image?.userId) {
     sessionEdit = (
-      <div className='imageIconHolder' onClick={openMenu}>
+      <div className='imageIconHolder'>
         <i class="far fa-edit"></i>
       </div>
     )
@@ -116,7 +117,8 @@ const ImgPage = () => {
             {/* {content} */}
           </div>
           <div className='rightview'>
-            <h2 className='single__updatedContent'>Image uploaded at: {image.createdAt}</h2>
+            {editCommentId && (<EditCommentForm image={image} commentId={editCommentId} hideForm={() => setEditCommentId(null)} />)}
+            <h2 className='single__updatedContent'>Image uploaded at: {image?.createdAt}</h2>
           </div>
         </div>
       </div>

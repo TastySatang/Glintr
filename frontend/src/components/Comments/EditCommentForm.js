@@ -4,11 +4,11 @@ import { updateComment, deleteComment } from "../../store/comments";
 
 import './Comments.css'
 
-const EditCommentForm = ({ commentId, isActive, setActive }) => {
+const EditCommentForm = ({ commentId, hideForm }) => {
   const comment = useSelector(state => state.comment[commentId])
   const dispatch = useDispatch();
 
-  const [text, setText] = useState(comment?.comment)
+  const [text, setText] = useState(comment.comment)
 
   const handleEditSubmit = async e => {
     e.preventDefault();
@@ -17,21 +17,24 @@ const EditCommentForm = ({ commentId, isActive, setActive }) => {
       id: commentId,
       comment: text
     };
+    console.log('insidehandlesubmit', payload)
+
     const updatedComment = await dispatch(updateComment(payload))
 
     if (updatedComment) {
-
+      hideForm();
     }
   };
 
   const handleCancelClick = e => {
     e.preventDefault();
-
-
+    hideForm();
   };
 
+
+
   return (
-    <div className='edit__commentForm'>
+    <div>
       <form onSubmit={handleEditSubmit}>
         <input
           type='text'
@@ -42,6 +45,7 @@ const EditCommentForm = ({ commentId, isActive, setActive }) => {
         <button type="button" onClick={handleCancelClick}>cancel</button>
         <button type='button' onClick={() => {
           dispatch(deleteComment(commentId))
+          hideForm();
         }}>Delete</button>
       </form>
     </div>

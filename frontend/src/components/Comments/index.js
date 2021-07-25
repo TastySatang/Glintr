@@ -3,27 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createComment, getComments, } from '../../store/comments';
 
 import './Comments.css'
-import EditCommentForm from './EditCommentForm';
 
-const CommentsComponent = ({ image, editCommentId, setEditCommentId }) => {
-  const comments = useSelector((state) => Object.values(state.comment).filter(comment => comment.imageId === image.id));
+const CommentsComponent = ({ image, setEditCommentId }) => {
+  const comments = useSelector((state) => Object.values(state.comment).filter(comment => comment.imageId === image?.id));
   const sessionUser = useSelector((state => state.session.user))
 
   const [newComment, setNewComment] = useState('')
-  const [isActive, setActive] = useState(false);
-  // const [showCommentForm, setShowCommentForm] = useState(false)
   const dispatch = useDispatch();
-
-  // const openMenu = () => {
-  //   setShowCommentForm(!showCommentForm);
-  //   console.log(showCommentForm)
-  // }
 
   useEffect(() => {
     dispatch(getComments(image?.id));
+
   }, [dispatch, image?.id])
-
-
 
   const handleCommentSubmit = async e => {
     e.preventDefault();
@@ -47,21 +38,17 @@ const CommentsComponent = ({ image, editCommentId, setEditCommentId }) => {
         if (sessionUser?.id === comment?.userId) {
           sessionEdit = (
             <div className='commentIconHolder'>
-              <i className="far fa-edit"></i>
+              <i className="far fa-edit" onClick={setEditCommentId(comment.id)}></i>
             </div>
           )
         } else {
-          sessionEdit = (
-            <>
-            </>
-          )
+          sessionEdit = null
         }
 
         return (
           <div className='comment' key={idx}>
-            <p>{comment.comment}</p>
+            <p class>{comment.comment}</p>
             {sessionEdit}
-            <EditCommentForm commentId={editCommentId} isActive={isActive} setActive={setActive} />
           </div>
         )
       })}
