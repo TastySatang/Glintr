@@ -26,16 +26,15 @@ const EditCommentForm = ({ commentId, hideForm }) => {
 
   const handleCancelClick = e => {
     e.preventDefault();
-    console.log(typeof commentId)
     hideForm();
   };
 
   return (
     <div className='editFormContainer' >
       <label>Edit Comment</label>
-      <form id='editForm' onSubmit={handleEditSubmit}>
+      <form id='editField' onSubmit={handleEditSubmit}>
         <textarea
-          className='editField'
+          className='editCommentField'
           type='text'
           placeholder='Edit text'
           value={text}

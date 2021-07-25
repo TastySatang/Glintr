@@ -40,7 +40,7 @@ const PostImage = () => {
         <form style={{ display: "flex", flexFlow: "column" }}
           onSubmit={handleSubmit}>
           <label>content
-            <textarea
+            <input
               type="text" placeholder='content'
               onChange={e => setContent(e.target.value)}
             />

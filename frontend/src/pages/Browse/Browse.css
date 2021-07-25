@@ -1,5 +1,7 @@
 .content {
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+font-family: darkmode-off, sans-serif;
+font-style: normal;
+font-weight: 100;
   font-weight: 100;
   font-size: 13px;
   background-color: #f3f5f6;
@@ -42,7 +44,6 @@
 }
 
 .single__content{
-  font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
   font-weight: 100;
   font-size: 13px;
   width: 100%;
@@ -131,8 +132,10 @@ margin-left: auto;
 
 .editField {
   width: 100%;
+  font-size: 13px;
+  font-family: darkmode-off, sans-serif;
+  font-weight: 100;
   font-size: 16px;
-  font-weight: 600;
   margin-bottom: 10px;
   padding-left: 10px;
   box-sizing: border-box;
