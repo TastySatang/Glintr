@@ -1,7 +1,11 @@
 # Glintr project
-This is a solo project to help myself use technologies I have learned so far. (react, redux, bcrypt, express, sequelize)
+This is a solo project to help myself use technologies I have learned so far. 
+
+Technologies used: (sequelize, postgresql, express, AWS S3, Javascript, React, Redux, css3, html5)
 
 [link to live website](https://glintr.herokuapp.com/)
+
+
 
 ## Using this repository
 
