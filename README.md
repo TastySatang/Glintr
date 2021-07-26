@@ -1,4 +1,6 @@
 # Glintr project
+![glintrLogo](https://github.com/TastySatang/AuthMe/blob/main/frontend/public/GlintrLogo.png)
+
 This is a solo project to help myself use technologies I have learned so far. 
 
 Technologies used: (Sequelize, Postgresql, Express, AWS S3, Javascript, React, Redux, css3, html5)
