@@ -1,7 +1,7 @@
 # Glintr project
 This is a solo project to help myself use technologies I have learned so far. 
 
-Technologies used: (sequelize, postgresql, express, AWS S3, Javascript, React, Redux, css3, html5)
+Technologies used: (Sequelize, Postgresql, Express, AWS S3, Javascript, React, Redux, css3, html5)
 
 [link to live website](https://glintr.herokuapp.com/)
 
