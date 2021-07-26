@@ -1,6 +1,8 @@
 # Glintr project
 This is a solo project to help myself use technologies I have learned so far. (react, redux, bcrypt, express, sequelize)
 
+[link to live website](https://glintr.herokuapp.com/)
+
 ## Using this repository
 
 1. Clone this repository
